@@ -69,7 +69,7 @@ h1,h2,h3,h4,h5{
 hr, label,
 .page-title,
 h1,h2,h3,h4,h5{
-    color: white;
+    color: black;
 }
 
 p, label{
@@ -110,8 +110,8 @@ nav {
 }
 
 .logo-img {
-  width: 180px;
-  height: 40px;
+  width: 140px;
+  height: 50px;
   float: left;
   position: relative;
   margin: 0px 10px 0px 10px;
@@ -123,23 +123,14 @@ nav {
 }
 
 .navbar-light .navbar-toggler{
-   border: 2px solid white;
-}
-
-.navbar-light .navbar-toggler-icon{
-    filter: invert(100%) !important;
+   border: 2px solid darkgray;
 }
 
 .nav-link{
-    font-size:24px;
+    font-size:22px;
+    font-weight:bold;
     margin: 0px 5px 0px 5px;
-    color: white !important;
-    text-shadow: var(--black-text-border);
-}
-
-.logo-img:hover,
-.nav-link:hover{
-    filter: invert(100%);
+    color: black !important;
 }
 
 .dropdown-toggle::after{
@@ -164,7 +155,7 @@ nav {
 /* Footer => Source / Inspiration : https://css-tricks.com/couple-takes-sticky-footer/ */
 
 .footer {
-  background-color: black;
+  background-color: transparent;
   -webkit-box-shadow: 0 8px 6px -6px rgba(200, 200, 200, 0.4);
   -moz-box-shadow: 8px 0 6px 2px rgba(200, 200, 200, 0.4);
   box-shadow: 0 8px 6px -6px black;
@@ -180,14 +171,14 @@ nav {
 .footer p {
   font-size: 14px !important;
   opacity: 1 !important;
-  color: white;
+  color: black;
   text-align: center;
   margin: auto;
   margin: auto;
 }
 
 .footer p a {
-  color: white !important;
+  color: black !important;
 }
 
 /* Footer Social Sharing buttons => Source / Inspiration : https://sharingbuttons.io/ */
@@ -197,7 +188,7 @@ nav {
   transition: 25ms ease-out;
   padding: 0.2rem 0.5rem 0.2rem 0.5rem;
   font-family: 'Helvetica Neue', 'Helvetica', 'Arial,sans-serif';
-  border: 0.1em solid white;
+  border: 0.1em solid black;
 }
 
 .resp-sharing-button__link,
@@ -207,12 +198,12 @@ nav {
 
 .resp-sharing-button__link {
   text-decoration: none;
-  color: white;
+  color: black;
   margin: 0 0.5em 0 0.5em;
 }
 
 .resp-sharing-button__icon {
-  fill: white;
+  fill: black;
   stroke: none;
 }
 
@@ -250,4 +241,29 @@ nav {
 .whatsapp:active {
   background-color: var(--whatsapp);
   border-color: var(--whatsapp);
+}
+
+
+/* Handling Resize */
+
+@media screen and (max-width: 991.5px) {
+    .logo-img{
+        margin:0px 10px 0px 5px !important;
+    }
+
+    body {
+      margin: 0 0 170px 0 !important;
+    }
+
+    nav{
+        margin-bottom: 2rem !important;
+    }
+
+    .navbar {
+      position: static;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
 }

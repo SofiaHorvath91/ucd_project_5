@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<main>
+    <div class="container">
+        <article>
+            <!-- Page Title -->
+            <header class="row page-title mb-3">
+                <div class="col-12">
+                    <h1 class="black-shadow">Log In</h1>
+                    {% if successMsg %}
+                        <h4 class="black-shadow text-success">{{ successMsg }}</h4>
+                    {% else %}
+                        <h4 class="black-shadow text-danger">{{ errorMsg }}</h4>
+                    {% endif %}
+                </div>
+            </header>
+            <!-- Login form -->
+            <div class="row">
+                <div class="col-7">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" required/>
+                        </div>
+                        <br>
+                        <input type="submit" value="Log In" class="btn btn-lg btn-light"/>
+                    </form>
+                </div>
+            </div>
+            <br>
+             <!-- Login with social media accounts (Facebook / Twitter / Google) -->
+             <footer class="row">
+                 <div class="d-grid gap-2 col-6">
+                     <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-primary mb-2">Login with Facebook</a>
+                     <a href="{% url 'social:begin' 'twitter' %}" class="btn btn-info mb-2">Login with Twitter</a>
+                     <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-danger mb-2">Login with Google</a>
+                 </div>
+            </footer>
+        </article>
+    </div>
+</main>
+{% endblock content %}

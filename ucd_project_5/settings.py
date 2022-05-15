@@ -5,7 +5,7 @@ import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')  # Configure path toward static html templates
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
     'mindthereader',
 ]
 
@@ -40,6 +41,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'ucd_project_5.urls'
@@ -47,7 +49,7 @@ ROOT_URLCONF = 'ucd_project_5.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -55,6 +57,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -85,7 +89,6 @@ DATABASES = {
 # DATABASES['default'].update(db_from_env)
 
 # Password validation
-# https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -102,6 +105,48 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+AUTH_USER_MODEL = "auth.User"
+
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'home'
+SOCIAL_AUTH_LOGIN_URL = '/'
+
+# Social login with Facebook
+SOCIAL_AUTH_FACEBOOK_KEY = config('SOCIAL_AUTH_FACEBOOK_KEY')
+SOCIAL_AUTH_FACEBOOK_SECRET = config('SOCIAL_AUTH_FACEBOOK_SECRET')
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id, name, email, picture.type(large), link'
+}
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
+    ('name', 'name'),
+    ('email', 'email'),
+    ('picture', 'picture'),
+    ('link', 'profile_url'),
+]
+
+# Social login with Twitter
+SOCIAL_AUTH_TWITTER_KEY = config('SOCIAL_AUTH_TWITTER_KEY')
+SOCIAL_AUTH_TWITTER_SECRET = config('SOCIAL_AUTH_TWITTER_SECRET')
+
+# Social login with Google
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
+SOCIAL_AUTH_GOOGLE_OAUTH2_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id, name, email, picture.type(large), link'
+}
+SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = [
+    ('name', 'name'),
+    ('email', 'email'),
+    ('picture', 'picture'),
+    ('link', 'profile_url'),
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

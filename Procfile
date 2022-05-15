@@ -1,1 +1,1 @@
-web: gunicorn mindthereader.wsgi
+web: gunicorn ucd_project_5.wsgi

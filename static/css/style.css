@@ -64,6 +64,8 @@ h1,h2,h3,h4,h5{
 .row{
     margin-right: 0 !important;
     margin-left: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
 }
 
 hr, label,
@@ -88,25 +90,12 @@ p, label{
 https://getbootstrap.com/docs/4.4/components/navs/
 https://www.w3schools.com/howto/howto_js_navbar_sticky.asp */
 
-.bg-light{
-    background:transparent !important;
-}
-
-nav {
-  right: 0;
-  left: 0;
-  margin-bottom: 5rem;
-  z-index: 10 !important;
-}
-
-.navbar {
-  width: 100%;
-  position: fixed;
-  top: 0;
-}
-
-.navbar-container{
-  width: 100%;
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1rem;
+    width: 1rem;
 }
 
 .logo-img {
@@ -116,40 +105,6 @@ nav {
   position: relative;
   margin: 0px 10px 0px 10px;
   cursor: pointer;
-}
-
-.navbar-toggler{
-  margin-right:10px;
-}
-
-.navbar-light .navbar-toggler{
-   border: 2px solid darkgray;
-}
-
-.nav-link{
-    font-size:22px;
-    font-weight:bold;
-    margin: 0px 5px 0px 5px;
-    color: black !important;
-}
-
-.dropdown-toggle::after{
-    display:none !important;
-}
-
-.dropdown-menu,
-.dropdown-item{
-    background-color:transparent !important;
-    border-color:transparent !important;
-    margin-right:20px !important;
-}
-
-.dropdown-menu{
-    margin-top:0 !important;
-}
-
-.dropdown-item{
-    border-radius: 1rem;
 }
 
 /* Footer => Source / Inspiration : https://css-tricks.com/couple-takes-sticky-footer/ */

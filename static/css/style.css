@@ -69,8 +69,7 @@ h1,h2,h3,h4,h5{
 }
 
 hr, label,
-.page-title,
-h1,h2,h3,h4,h5{
+.page-title{
     color: black;
 }
 
@@ -200,6 +199,28 @@ https://www.w3schools.com/howto/howto_js_navbar_sticky.asp */
 
 
 /* Handling Resize */
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 80%;
+  }
+}
+
+/* fixed top navbar only on medium and up */
+@media (min-width: 992px) {
+    .fixed-top {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+    .header-container {
+        padding-top: 164px;
+    }
+}
 
 @media screen and (max-width: 991.5px) {
     .logo-img{

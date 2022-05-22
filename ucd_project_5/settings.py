@@ -13,7 +13,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["serene-citadel-08400.herokuapp.com"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition

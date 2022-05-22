@@ -175,4 +175,4 @@ STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-django_heroku.settings(config=locals(), staticfiles=False, logging=False)
+django_heroku.settings(config=locals())

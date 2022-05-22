@@ -4,8 +4,9 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('mindthereader.urls')),
     path('oauth/', include('social_django.urls', namespace='social')),
+    path('', include('mindthereader.urls')),
+    path('books/', include('books.urls')),
 ]
 
 # Configure url path for static files (static/txt+img+css)

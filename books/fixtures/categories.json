@@ -1,0 +1,34 @@
+[
+  {
+    "pk": 1,
+    "model": "books.category",
+    "fields": {
+      "name": "Crime-Thriller",
+      "friendly_name": "Crime-Thriller"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "books.category",
+    "fields": {
+      "name": "Comics-Manga",
+      "friendly_name": "Comics-Manga"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "books.category",
+    "fields": {
+      "name": "Poetry-Drama",
+      "friendly_name": "Poetry-Drama"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "books.category",
+    "fields": {
+      "name": "SciFi-Fantasy-Horror",
+      "friendly_name": "SciFi-Fantasy-Horror"
+    }
+  }
+]

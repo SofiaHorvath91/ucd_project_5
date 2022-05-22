@@ -1,13 +1,33 @@
+from django.contrib import messages
 from django.contrib.auth import get_user_model, authenticate, login, logout
-from django.shortcuts import render, redirect
+from django.db.models import Q
+from django.shortcuts import render, redirect, reverse
 from itertools import chain
 from django.contrib.auth.decorators import login_required
+
+from books.models import Book, Category
 
 User = get_user_model()
 
 
 # Home Page (home.html)
 def home(request):
+    books = Book.objects.all()
+    if 'q' in request.GET:
+        query = request.GET['q']
+        if not query:
+            messages.error(request, "You didn't enter any search criteria!")
+            return redirect(reverse('books'))
+
+        queries = Q(name__icontains=query) | Q(author__icontains=query)
+        books = books.filter(queries)
+        context = {
+            'books': books,
+            'search_term': query,
+        }
+
+        return render(request, 'books/books.html', context)
+
     return render(request, 'mindthereader/home.html')
 
 

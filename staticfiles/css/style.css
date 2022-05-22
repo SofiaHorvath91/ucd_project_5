@@ -109,7 +109,7 @@ https://www.w3schools.com/howto/howto_js_navbar_sticky.asp */
 /* Footer => Source / Inspiration : https://css-tricks.com/couple-takes-sticky-footer/ */
 
 .footer {
-  background-color: transparent;
+  background-color: black;
   -webkit-box-shadow: 0 8px 6px -6px rgba(200, 200, 200, 0.4);
   -moz-box-shadow: 8px 0 6px 2px rgba(200, 200, 200, 0.4);
   box-shadow: 0 8px 6px -6px black;
@@ -211,6 +211,13 @@ hr{
     background-color: transparent !important;
 }
 
+.book-detail-img{
+    margin-top: 10rem !important;
+}
+
+.book-detail-info{
+    margin-top: 5rem !important;
+}
 
 /* Handling Resize */
 
@@ -250,8 +257,18 @@ hr{
     .navbar {
       position: static;
     }
+
+    .book-detail-img{
+        margin-top: 13rem !important;
+    }
+
+    .book-detail-info{
+        margin-top: 9rem !important;
+    }
 }
 
-@media screen and (max-width: 500px) {
-
+@media screen and (max-width: 768px) {
+    .book-detail-info{
+        margin-top: 2rem !important;
+    }
 }

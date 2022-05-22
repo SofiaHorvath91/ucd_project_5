@@ -11,9 +11,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')  # Configure path toward sta
 
 SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["serene-citadel-08400.herokuapp.com", "localhost"]
 
 
 # Application definition
@@ -67,18 +67,18 @@ WSGI_APPLICATION = 'ucd_project_5.wsgi.application'
 
 # Database
 
-# DATABASES = {
-#      'default': {
-#          'ENGINE': 'django.db.backends.sqlite3',
-#          'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#      }
-# }
-
 DATABASES = {
-      'default': {
-          'ENGINE': 'django.db.postgresql_psycopg2',
-      }
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+     }
 }
+
+# DATABASES = {
+#       'default': {
+#           'ENGINE': 'django.db.postgresql_psycopg2',
+#       }
+# }
 
 # DATABASES['default'] = dj_database_url.config(default='postgres://txhaucrwmuxifl:db307114cf06f8980c201d9764826a195ba65de19ef1a77ff2d7f5fd762c968e@ec2-107-22-238-112.compute-1.amazonaws.com:5432/d6najr56rc9cok')
 

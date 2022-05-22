@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.contrib import messages
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 
 from .models import Book, Category
 
@@ -40,7 +40,7 @@ def all_books(request):
                 messages.error(request, "You didn't enter any search criteria!")
                 return redirect(reverse('books'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(name__icontains=query) | Q(author__icontains=query)
             books = books.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
@@ -53,3 +53,13 @@ def all_books(request):
     }
 
     return render(request, 'books/books.html', context)
+
+
+def book_detail(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+
+    context = {
+        'book': book,
+    }
+
+    return render(request, 'books/book_detail.html', context)

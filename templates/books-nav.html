@@ -6,37 +6,41 @@
                 All Books
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-books-link">
-                <a href="" class="dropdown-item">By Price</a>
-                <a href="" class="dropdown-item ">By Rating</a>
-                <a href="" class="dropdown-item ">By Category</a>
+                <a href="{% url 'books' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
+                <a href="{% url 'books' %}?sort=book_depository_stars&direction=asc" class="dropdown-item ">By Rating</a>
+                <a href="{% url 'books' %}?sort=category&direction=asc" class="dropdown-item ">By Category</a>
                 <a href="{% url 'books' %}" class="dropdown-item">All Books</a>
             </div>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5 bold" href="#" id="crime-thriller-link"
-               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5 bold"
+               href="{% url 'books' %}?category=Crime-Thriller" id="crime-thriller-link"
+               aria-haspopup="true" aria-expanded="false">
                 Crime-Thriller
             </a>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5 bold" href="#" id="comics-manga-link"
-               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5 bold"
+               href="{% url 'books' %}?category=Comics-Manga" id="comics-manga-link"
+               aria-haspopup="true" aria-expanded="false">
                 Comics-Manga
             </a>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black bold" href="#" id="poetry-drama-link"
-               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black bold"
+               href="{% url 'books' %}?category=Poetry-Drama" id="poetry-drama-link"
+               aria-haspopup="true" aria-expanded="false">
                 Poetry-Drama
             </a>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black bold" href="#" id="scifi-fantasy-horror-link"
-               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black bold"
+               href="{% url 'books' %}?category=SciFi-Fantasy-Horror" id="scifi-fantasy-horror-link"
+               aria-haspopup="true" aria-expanded="false">
                 SciFi-Fantasy-Horror
             </a>
         </li>

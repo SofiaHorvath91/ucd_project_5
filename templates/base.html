@@ -103,6 +103,20 @@
         </div>
     </header>
 
+    {% if messages %}
+        <div class="message-container">
+            {% for message in messages %}
+                {% with message.level as level %}
+                    {% if level == 40 %}
+                        {% include 'messages/message_error.html' %}
+                    {% else %}
+                        {% include 'messages/message_success.html' %}
+                    {% endif %}
+                {% endwith %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
     <!-- Main Part -->
     {% block content %}
     {% endblock content %}
@@ -175,5 +189,10 @@
             </div>
         </div>
     </footer>
+
+    <script type="text/javascript">
+        $('.toast').toast('show');
+    </script>
+
 </body>
 </html>

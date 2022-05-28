@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'social_django',
     'mindthereader',
     'books',
+    'shopping_bag',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +58,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
+                'shopping_bag.contexts.my_bag_contents',
             ],
         },
     },
@@ -176,3 +178,6 @@ STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 django_heroku.settings(config=locals(), staticfiles=False, logging=False)
+
+FREE_DELIVERY_THRESHOLD = 50
+STANDARD_DELIVERY_PERCENTAGE = 10

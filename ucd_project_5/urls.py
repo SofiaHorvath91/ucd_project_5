@@ -7,6 +7,7 @@ urlpatterns = [
     path('oauth/', include('social_django.urls', namespace='social')),
     path('', include('mindthereader.urls')),
     path('books/', include('books.urls')),
+    path('shopping_bag/', include('shopping_bag.urls')),
 ]
 
 # Configure url path for static files (static/txt+img+css)

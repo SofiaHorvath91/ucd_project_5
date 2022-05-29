@@ -93,8 +93,6 @@ DATABASES = {
       }
 }
 
-# DATABASES['default'] = dj_database_url.config(default='postgres://txhaucrwmuxifl:db307114cf06f8980c201d9764826a195ba65de19ef1a77ff2d7f5fd762c968e@ec2-107-22-238-112.compute-1.amazonaws.com:5432/d6najr56rc9cok')
-
 db_from_env = dj_database_url.config(conn_max_age=500, ssl_require=True)
 DATABASES['default'].update(db_from_env)
 
@@ -181,7 +179,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
 # Default primary key field type

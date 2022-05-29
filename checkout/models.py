@@ -45,7 +45,7 @@ class Order(models.Model):
     def save_order_number(self, *args, **kwargs):
         if not self.order_number:
             self.order_number = self._generate_order_number()
-        super().save(*args, **kwargs)
+        super(Order, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.order_number
@@ -59,7 +59,7 @@ class OrderLineItem(models.Model):
 
     def save(self, *args, **kwargs):
         self.lineitem_total = self.book.price * self.quantity
-        super().save(*args, **kwargs)
+        super(OrderLineItem, self).save(*args, **kwargs)
 
     def __str__(self):
         return f'ISBN {self.book.isbn} on order {self.order.order_number}'

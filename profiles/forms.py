@@ -18,7 +18,7 @@ class UserProfileForm(forms.ModelForm):
             'basic_county': 'County / State / Locality',
         }
 
-        self.fields['basic_phone_number'].widget.attrs['autofocus'] = True
+        self.fields['basic_phone'].widget.attrs['autofocus'] = True
         for field in self.fields:
             if field != 'basic_country':
                 if self.fields[field].required:

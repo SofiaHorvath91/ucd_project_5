@@ -25,6 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body class="background">
     <!-- Navigation Bar -->
@@ -120,6 +121,9 @@
     <!-- Main Part -->
     {% block content %}
     {% endblock content %}
+
+    {% block postloadjs %}
+    {% endblock %}
 
     <!-- Footer part -->
     <footer class="footer">

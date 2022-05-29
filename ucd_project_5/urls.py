@@ -8,6 +8,8 @@ urlpatterns = [
     path('', include('mindthereader.urls')),
     path('books/', include('books.urls')),
     path('shopping_bag/', include('shopping_bag.urls')),
+    path('checkout/', include('checkout.urls')),
+    path('profile/', include('profiles.urls')),
 ]
 
 # Configure url path for static files (static/txt+img+css)

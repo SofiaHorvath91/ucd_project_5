@@ -29,6 +29,9 @@ INSTALLED_APPS = [
     'mindthereader',
     'books',
     'shopping_bag',
+    'checkout',
+    'profiles',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -45,6 +48,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ucd_project_5.urls'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -60,6 +65,10 @@ TEMPLATES = [
                 'social_django.context_processors.login_redirect',
                 'shopping_bag.contexts.my_bag_contents',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
@@ -183,3 +192,7 @@ django_heroku.settings(config=locals(), staticfiles=False, logging=False)
 
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
+STRIPE_CURRENCY = 'usd'
+STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
+STRIPE_WH_SECRET = config('STRIPE_WH_SECRET')

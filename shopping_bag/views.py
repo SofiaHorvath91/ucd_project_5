@@ -7,7 +7,6 @@ from books.models import Book
 
 
 def view_my_bag(request):
-
     return render(request, 'shopping_bag/my_bag.html')
 
 

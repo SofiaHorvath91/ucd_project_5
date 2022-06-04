@@ -60,10 +60,10 @@ def checking_out(request):
             order.save()
             for item_id, quantity in bag.items():
                 try:
-                    product = Book.objects.get(id=item_id)
+                    book = Book.objects.get(id=item_id)
                     order_line_item = OrderLineItem(
                         order=order,
-                        book=product,
+                        book=book,
                         quantity=quantity,
                     )
                     order_line_item.save()

@@ -10,6 +10,7 @@ urlpatterns = [
     path('shopping_bag/', include('shopping_bag.urls')),
     path('checkout/', include('checkout.urls')),
     path('profile/', include('profiles.urls')),
+    path('feedback/', include('feedback.urls')),
 ]
 
 # Configure url path for static files (static/txt+img+css)

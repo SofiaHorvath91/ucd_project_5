@@ -5,12 +5,12 @@
     <div class="container main-container">
         <div class="row">
             <div class="col">
-                <h2 class="logo-font mb-4 mt-4">My Profile</h2>
+                <h1 class="logo-font mb-4 mt-4">My Profile</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-lg-6">
-                <h4 class="text-dark bold">Default Delivery Information</h4>
+                <h4 class="text-dark white-shadow bold">Default Delivery Information</h4>
                 <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
                     {% csrf_token %}
                     {{ form|crispy }}
@@ -18,7 +18,7 @@
                 </form>
             </div>
             <div class="col-12 col-lg-6">
-                <h4 class="text-dark bold">Order History</h4>
+                <h4 class="text-dark white-shadow bold">Order History</h4>
                 <div class="order-history table-responsive">
                     <table class="table table-sm table-borderless">
                         <thead>
@@ -54,6 +54,140 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <!-- List of item recommendations made by user with links for each toward the Blog page
+             where user can create new recommendation and Delete option-->
+            <div class="row mt-4 mb-3">
+                <div>
+                    <div>
+                        <h3 class="white-shadow">My Recommendations</h3>
+                        <div class="mb-3 mt-2">
+                            <div class="col-12">
+                                <a class="btn btn-dark" href="{% url 'feedback' %}">
+                                    Create New
+                                </a>
+                            </div>
+                        </div>
+                        {% if recommendations %}
+                        {% for r in recommendations %}
+                        <div class="row">
+                            <article class="card mb-3">
+                                <div>
+                                    <h5 class="mt-2 mb-3">Recommendation #{{r.id}}</h5>
+                                </div>
+                                <div>
+                                    <p>Title : {{r.title}}</p>
+                                    <p>Author : {{r.author}}</p>
+                                    <p>Category : {{r.category}}</p>
+                                    <p>Status : {{r.status}}</p>
+                                </div>
+                                <div>
+                                    <div class="center-container">
+                                        {% if request.user == r.user %}
+                                        <form class="mb-2 me-1" method="POST">
+                                            {% csrf_token %}
+                                            <div>
+                                                <div class="col-12">
+                                                    <input type="hidden" id="myrecommendations-to-delete"
+                                                           name="myrecommendations-to-delete"
+                                                           value="{{r.id}}">
+                                                    <input type="submit" value="Delete"
+                                                           class="btn btn-md btn-danger">
+                                                </div>
+                                            </div>
+                                        </form>
+                                        {% endif %}
+                                        {% if request.user.is_superuser and r.status == 'Pending' %}
+                                        <form class="mb-2 me-1" method="POST">
+                                            {% csrf_token %}
+                                            <div>
+                                                <div class="col-12">
+                                                    <input type="hidden" id="recommendations-to-approve"
+                                                           name="recommendations-to-approve"
+                                                           value="{{r.id}}">
+                                                    <input type="submit" value="Approve"
+                                                           class="btn btn-md btn-dark">
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <form class="mb-2 me-1" method="POST">
+                                            {% csrf_token %}
+                                            <div>
+                                                <div class="col-12">
+                                                    <input type="hidden" id="recommendations-to-reject"
+                                                           name="recommendations-to-reject"
+                                                           value="{{r.id}}">
+                                                    <input type="submit" value="Reject"
+                                                           class="btn btn-md btn-danger">
+                                                </div>
+                                            </div>
+                                        </form>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <div class="card row">
+                            <h5 class="mt-2 mb-2">No recommendations yet.</h5>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <!-- List of feedbacks made by user with links for each toward the Blog page where user can leave new
+             feedback and Delete option-->
+            <div class="mt-4 mb-3">
+                <h3 class="white-shadow">My Feedbacks</h3>
+                <div class="mb-3 mt-2">
+                    <div class="col-12">
+                        <a class="btn btn-dark" href="{% url 'feedback' %}">
+                            Create New
+                        </a>
+                    </div>
+                </div>
+                {% if feedbacks %}
+                {% for f in feedbacks %}
+                    <div class="card mb-3">
+                        <article class="row">
+                            <div>
+                                <h5 class="mt-2 feedback-post-title">
+                                    <strong>Feedback #{{f.id}}</strong>
+                                </h5>
+                            </div>
+                            <div>
+                                <p class="mt-1">By user : {{f.user}}</p>
+                                <p>Created on : {{f.created}}</p>
+                                <p>Rating : {{f.rating_point}} stars ({{f.rating_description}})</p>
+                                <p>Feedback :<br>{{f.content|default:"N/A"}}</p>
+                            </div>
+                        </article>
+                        <div class="row mb-2">
+                            <div class="col-12">
+                                <a class="btn btn-dark" href="{% url 'feedback' %}">
+                                    Go to Blog
+                                </a>
+                            </div>
+                        </div>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="row mb-2">
+                                <div class="col-12">
+                                    <input type="hidden" id="myfeedback-to-delete"
+                                           name="myfeedback-to-delete" value="{{f.id}}">
+                                    <input type="submit" value="Delete"
+                                           class="btn btn-md btn-danger">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                {% endfor %}
+                {% else %}
+                <div class="card row">
+                    <h5 class="mt-2 mb-2">No feedbacks yet.</h5>
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>

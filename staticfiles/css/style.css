@@ -9,6 +9,7 @@
   --card-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.9);
   --black-text-border: -1px 0 black, 0 1.2px black, 1.2px 0 black, 0 -1px black;
   --strong-text-shadow: 3px 3px 4px black, 0 0 35px black, 0 0 20px black;
+  --strong-text-shadow-white: 3px 3px 4px white, 0 0 35px white, 0 0 20px white;
   --facebook: #0b5ed7;
   --twitter: #31d2f2;
   --email: #777777;
@@ -81,6 +82,10 @@ p, label{
     text-shadow: var(--black-text-border);
 }
 
+.white-shadow{
+    text-shadow: var(--strong-text-shadow-white);
+}
+
 .btn-outline-light{
     border: 2px solid white !important;
 }
@@ -90,10 +95,41 @@ p, label{
     box-shadow: 1px 1px black !important;
 }
 
+.card-shadow{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+}
+
 .site-title{
     color: white;
     font-size: 4rem;
     text-shadow: var(--strong-text-shadow);
+}
+
+.site-icon{
+    width: 150px;
+}
+
+.random-offer-img{
+    height: 250px;
+    width: auto;
+    background-color: transparent;
+}
+
+.home-sub-title{
+    font-weight: bolder;
+    font-size: 2rem;
+}
+
+.home-sub-title p{
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: var(--strong-text-shadow);
+    margin-bottom: 0;
+}
+
+.home-btns a{
+    width: 250px;
+    font-size: 1.8rem;
 }
 
 /* Navbar => Source / Inspiration :
@@ -109,12 +145,15 @@ https://www.w3schools.com/howto/howto_js_navbar_sticky.asp */
 }
 
 .logo-img {
-  width: 140px;
-  height: 50px;
+  width: 120px;
+  height: 60px;
   float: left;
   position: relative;
-  margin: 0px 10px 0px 10px;
   cursor: pointer;
+}
+
+.main-logo-link{
+    padding-top: 0 !important;
 }
 
 /* Footer => Source / Inspiration : https://css-tricks.com/couple-takes-sticky-footer/ */
@@ -127,6 +166,11 @@ https://www.w3schools.com/howto/howto_js_navbar_sticky.asp */
   bottom: 0;
   width: 100%;
   text-align: center;
+  background-color: transparent;
+  background-image:
+    linear-gradient(
+      transparent, black
+    );
 }
 
 .footer p {
@@ -147,9 +191,10 @@ https://www.w3schools.com/howto/howto_js_navbar_sticky.asp */
 .resp-sharing-button {
   border-radius: 5px;
   transition: 25ms ease-out;
-  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+  padding: 1rem;
   font-family: 'Helvetica Neue', 'Helvetica', 'Arial,sans-serif';
-  border: 0.1em solid white;
+  border: 0.1em solid #212529;
+  background-color: #212529;
 }
 
 .resp-sharing-button__link,
@@ -160,7 +205,6 @@ https://www.w3schools.com/howto/howto_js_navbar_sticky.asp */
 .resp-sharing-button__link {
   text-decoration: none;
   color: white;
-  margin: 0 0.5em 0 0.5em;
 }
 
 .resp-sharing-button__icon {
@@ -169,8 +213,8 @@ https://www.w3schools.com/howto/howto_js_navbar_sticky.asp */
 }
 
 .resp-sharing-button__icon svg {
-  width: 0.9em;
-  height: 0.9em;
+  width: 1.5em;
+  height: 1.5em;
   margin-right: 0.4em;
   vertical-align: top;
 }
@@ -400,7 +444,59 @@ select option[value=""] {
       position: static;
     }
 
+    #site-banner{
+        font-size: 14px;
+    }
+
     .site-title{
     font-size: 3rem;
+    }
+
+    .site-intro{
+        font-size: 1.5rem;
+    }
+
+    .home-sub-title,
+    .home-sub-title p{
+        font-size: 1.8rem !important;
+    }
+
+    .home-btns a{
+        width: 150px;
+        font-size: 1rem;
+    }
+
+    .resp-sharing-button{
+        padding: 0.5rem;
+    }
+
+    .resp-sharing-button__icon svg {
+      width: 1.5em;
+      height: 1em;
+    }
 }
+
+@media screen and (max-width: 300px) {
+    #site-banner{
+        font-size: 10px;
+    }
+
+    .site-title{
+    font-size: 2.5rem;
+    }
+
+    .site-intro{
+        font-size: 1rem;
+    }
+
+    .home-sub-title,
+    .home-sub-title p{
+        font-size: 1.2rem !important;
+    }
+
+    .home-btns a{
+        width: 150px;
+        font-size: 1rem;
+    }
+
 }

@@ -4,10 +4,9 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.db.models import Q
 from django.shortcuts import render, redirect, reverse
-from itertools import chain
 from django.contrib.auth.decorators import login_required
 
-from books.models import Book, Category
+from books.models import Book
 
 User = get_user_model()
 
@@ -15,25 +14,21 @@ User = get_user_model()
 # Home Page (home.html)
 def home(request):
     context = {}
-    books = Book.objects.all()
+    all_books = Book.objects.all()
 
-    random_num = random.randint(0, (len(books) - 1))
-    random_book = books[random_num]
+    random_num = random.randint(0, (len(all_books) - 1))
+    random_book = all_books[random_num]
     context['book'] = random_book
 
+    # Allow users to use global search for books
     if 'q' in request.GET:
         query = request.GET['q']
-        if not query:
-            messages.error(request, "You didn't enter any search criteria!")
-            return redirect(reverse('books'))
-
-        queries = Q(name__icontains=query) | Q(author__icontains=query)
-        books = books.filter(queries)
+        queries = global_search(request, query)
+        books = all_books.filter(queries)
         context = {
             'books': books,
             'search_term': query,
         }
-
         return render(request, 'books/books.html', context)
 
     return render(request, 'mindthereader/home.html', context)
@@ -45,6 +40,17 @@ def home(request):
 # via standard form / social login (Facebook, Twitter, Google)
 def signin(request):
     context = {}
+
+    # Allow users to use global search for books
+    if 'q' in request.GET:
+        query = request.GET['q']
+        queries = global_search(request, query)
+        books = Book.objects.filter(queries)
+        context = {
+            'books': books,
+            'search_term': query,
+        }
+        return render(request, 'books/books.html', context)
 
     # Get username and password from user
     if request.method == "POST":
@@ -71,6 +77,18 @@ def signin(request):
 def signup(request):
     context = {}
 
+    # Allow users to use global search for books
+    if 'q' in request.GET:
+        query = request.GET['q']
+        queries = global_search(request, query)
+        books = Book.objects.filter(queries)
+        context = {
+            'books': books,
+            'search_term': query,
+        }
+        return render(request, 'books/books.html', context)
+
+    # Handling registration request
     if request.method == "POST":
         password1 = request.POST['password1']
         password2 = request.POST['password2']
@@ -115,3 +133,15 @@ def signout(request):
         return redirect('login')
     else:
         return redirect('mindthereader/logout.html')
+
+
+# Helper methods
+
+# Helper for global search
+def global_search(request, query):
+    if not query:
+        messages.error(request, "You didn't enter any search criteria!")
+        return redirect(reverse('books'))
+
+    queries = Q(name__icontains=query) | Q(author__icontains=query)
+    return queries

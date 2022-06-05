@@ -1,19 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<main>
-    <div class="container main-container">
-        <article>
-            <!-- Page Title = Site Title as Home page -->
-            <header>
-                <div class="row page-title mb-3">
+<div class="overlay"></div>
+<div class="container main-container">
+    <article class="row">
+        <!-- Page Title = Site Title as Home page -->
+        <header class="row page-title mt-5 mb-3">
+            <div class="text-center">
+                <h1 class="site-title">Mind The Reader</h1>
+            </div>
+        </header>
+        <!-- Site Objective & Quick links to accessible pages based on login status -->
+        <section>
+            <div class="row">
+                <div class="center-container">
+                     <img src="{% static '' %}img/{{ book.img_paths }}" alt="{{ book.name }}">
                 </div>
-            </header>
-            <!-- Site Objective & Quick links to accessible pages based on login status -->
-            <section>
-
-            </section>
-        </article>
-    </div>
-</main>
+            </div>
+        </section>
+    </article>
+</div>
 {% endblock content %}

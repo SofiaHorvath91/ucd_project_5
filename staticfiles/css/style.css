@@ -8,7 +8,7 @@
   --hover-shadow: 0 0 10px black;
   --card-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.9);
   --black-text-border: -1px 0 black, 0 1.2px black, 1.2px 0 black, 0 -1px black;
-  --strong-text-shadow: 0 0 10px black, 0 0 10px black;;
+  --strong-text-shadow: 3px 3px 4px black, 0 0 35px black, 0 0 20px black;
   --facebook: #0b5ed7;
   --twitter: #31d2f2;
   --email: #777777;
@@ -31,7 +31,7 @@ body {
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-image: url('background.jpg');
+  background-image: url('background.png');
 }
 
 header,
@@ -83,6 +83,17 @@ p, label{
 
 .btn-outline-light{
     border: 2px solid white !important;
+}
+
+.form-control{
+    border: 1px solid darkgray !important;
+    box-shadow: 1px 1px black !important;
+}
+
+.site-title{
+    color: white;
+    font-size: 4rem;
+    text-shadow: var(--strong-text-shadow);
 }
 
 /* Navbar => Source / Inspiration :
@@ -226,6 +237,12 @@ hr{
     height: 2px;
 }
 
+.msg-close-btn {
+    border: 1px solid transparent !important;
+    background-color: transparent !important;
+    font-size: 1.5rem !important;
+}
+
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
 .arrow-up {
     width: 0;
@@ -239,14 +256,6 @@ hr{
 }
 
 /* Convenience classes - colors copied from Bootstrap */
-.arrow-primary {
-    border-bottom-color: #007bff !important;
-}
-
-.arrow-secondary {
-    border-bottom-color: #6c757d !important;
-}
-
 .arrow-success {
     border-bottom-color: #28a745 !important;
 }
@@ -255,26 +264,12 @@ hr{
     border-bottom-color: #dc3545 !important;
 }
 
-.arrow-warning {
-    border-bottom-color: #ffc107 !important;
-}
-
-.arrow-info {
-    border-bottom-color: #17a2b8 !important;
-}
-
 .arrow-light {
     border-bottom-color: #f8f9fa !important;
 }
 
 .arrow-dark {
     border-bottom-color: #343a40 !important;
-}
-
-.bag-notification-wrapper {
-    height: 100px;
-    overflow-x: hidden;
-    overflow-y: auto;
 }
 
 /* Stripe Checkout */
@@ -393,10 +388,6 @@ select option[value=""] {
 }
 
 @media screen and (max-width: 991.5px) {
-    .logo-img{
-        margin:0px 10px 0px 5px !important;
-    }
-
     body {
       margin: 0 0 170px 0 !important;
     }
@@ -408,4 +399,8 @@ select option[value=""] {
     .navbar {
       position: static;
     }
+
+    .site-title{
+    font-size: 3rem;
+}
 }

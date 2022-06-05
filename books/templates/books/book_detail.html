@@ -9,25 +9,28 @@
             </div>
             <div class="col-12 col-md-6">
                 <div class="book-details-container mb-5 mt-md-5">
-                    <h5 class="mb-0"><b>{{ book.name }}</b></h5>
-                    <p class="lead mb-0 text-left font-weight-bold">${{ book.price }}</p>
+                    <h5 class="mb-0"><b>{{ book.author }}</b></h5>
+                    <h4 class="mb-0"><b>{{ book.name }}</b></h4>
+                    <h5 class="lead mt-2 mb-2 text-left font-weight-bold">${{ book.price }}</h5>
                     {% if book.category %}
                     <p class="small mt-1 mb-0">
-                        <a class="text-muted" href="{% url 'books' %}?category={{ book.category.name }}">
-                            <i class="fas fa-tag mr-1"></i>{{ book.category.friendly_name }}
+                        <a class="text-dark bold" href="{% url 'books' %}?category={{ book.category.name }}">
+                            <i class="fas fa-tag me-2"></i>{{ book.category.friendly_name }}
                         </a>
                     </p>
                     {% endif %}
                     {% if book.book_depository_stars %}
-                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ book.book_depository_stars }} / 5</small>
+                        <p class="small text-dark bold">
+                            <i class="fas fa-star me-2"></i>{{ book.book_depository_stars }} / 5
+                        </p>
                     {% else %}
-                        <small class="text-muted">No Rating</small>
+                        <p class="small text-dark bold">No Rating</p>
                     {% endif %}
                     {% if request.user.is_superuser %}
-                        <small class="ml-3">
+                        <p class="ml-3">
                             <a href="">Edit</a> |
                             <a class="text-danger" href="">Delete</a>
-                        </small>
+                        </p>
                     {% endif %}
                     <form class="form" action="{% url 'add_to_my_bag' book.id %}" method="POST">
                         {% csrf_token %}

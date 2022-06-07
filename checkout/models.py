@@ -43,7 +43,7 @@ class Order(models.Model):
         self.save()
 
     def save_order_number(self, *args, **kwargs):
-        if not self.order_number:
+        if len(self.order_number) == 0:
             self.order_number = self._generate_order_number()
         super(Order, self).save(*args, **kwargs)
 

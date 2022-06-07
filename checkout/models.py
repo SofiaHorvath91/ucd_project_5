@@ -11,7 +11,7 @@ from profiles.models import Profile
 
 
 class Order(models.Model):
-    order_number = models.UUIDField(default=uuid.uuid4, null=False, editable=False)
+    order_number = models.CharField(max_length=32, null=False, editable=False)
     profile = models.ForeignKey(Profile, on_delete=models.SET_NULL,
                                 null=True, blank=True, related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)
@@ -46,6 +46,9 @@ class Order(models.Model):
         if not self.order_number:
             self.order_number = self._generate_order_number()
         super(Order, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.order_number
 
 
 class OrderLineItem(models.Model):

@@ -11,7 +11,7 @@ from profiles.models import Profile
 
 
 class Order(models.Model):
-    order_number = models.UUIDField(default=uuid.uuid4, null=False, editable=False)
+    order_number = models.UUIDField(null=False, editable=False)
     profile = models.ForeignKey(Profile, on_delete=models.SET_NULL,
                                 null=True, blank=True, related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)

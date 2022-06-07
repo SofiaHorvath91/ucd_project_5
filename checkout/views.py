@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
@@ -134,7 +136,7 @@ def checkout_success(request, order_number):
     Handle successful checkouts
     """
     save_info = request.session.get('save_info')
-    order = get_object_or_404(Order, order_number=str(order_number))
+    order = get_object_or_404(Order, order_number=UUID(order_number))
 
     if request.user.is_authenticated:
         profile = Profile.objects.get(user=request.user)

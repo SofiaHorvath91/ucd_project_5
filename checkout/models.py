@@ -11,7 +11,7 @@ from profiles.models import Profile
 
 
 class Order(models.Model):
-    order_number = models.CharField(max_length=40, null=False, editable=False)
+    order_number = models.CharField(max_length=32, null=False, editable=False)
     profile = models.ForeignKey(Profile, on_delete=models.SET_NULL,
                                 null=True, blank=True, related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)
@@ -31,7 +31,7 @@ class Order(models.Model):
     stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
 
     def _generate_order_number(self):
-        return uuid.uuid4().hex.upper()
+        return uuid.uuid4()
 
     def update_total(self):
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
@@ -43,12 +43,9 @@ class Order(models.Model):
         self.save()
 
     def save_order_number(self, *args, **kwargs):
-        if len(self.order_number) == 0:
+        if not self.order_number:
             self.order_number = self._generate_order_number()
         super(Order, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.order_number
 
 
 class OrderLineItem(models.Model):

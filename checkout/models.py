@@ -11,7 +11,7 @@ from profiles.models import Profile
 
 
 class Order(models.Model):
-    order_number = models.UUIDField(editable=False)
+    order_number = models.UUIDField(default=uuid.uuid4, null=False, editable=False)
     profile = models.ForeignKey(Profile, on_delete=models.SET_NULL,
                                 null=True, blank=True, related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)
@@ -31,7 +31,7 @@ class Order(models.Model):
     stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
 
     def _generate_order_number(self):
-        return uuid.uuid4()
+        return uuid.uuid4().hex
 
     def update_total(self):
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0

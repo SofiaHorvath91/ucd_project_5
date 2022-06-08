@@ -1,0 +1,83 @@
+[
+  {
+    "pk": 1,
+    "model": "dailybook.question",
+    "fields": {
+      "quiz": 1,
+      "number": 1,
+      "question": "What is your mood today?"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "dailybook.question",
+    "fields": {
+      "quiz": 1,
+      "number": 2,
+      "question": "What would you wear today?"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "dailybook.question",
+    "fields": {
+      "quiz": 1,
+      "number": 3,
+      "question": "What would you eat today?"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "dailybook.question",
+    "fields": {
+      "quiz": 1,
+      "number": 4,
+      "question": "What is your preferred drink today?"
+    }
+  },
+    {
+    "pk": 5,
+    "model": "dailybook.question",
+    "fields": {
+      "quiz": 1,
+      "number": 5,
+      "question": "Where would you rather be today?"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "dailybook.question",
+    "fields": {
+      "quiz": 1,
+      "number": 6,
+      "question": "What role would you take today?"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "dailybook.question",
+    "fields": {
+      "quiz": 1,
+      "number": 7,
+      "question": "What weather would your prefer today?"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "dailybook.question",
+    "fields": {
+      "quiz": 1,
+      "number": 8,
+      "question": "What music would you listen to today?"
+    }
+  },
+  {
+  "pk": 9,
+  "model": "dailybook.question",
+    "fields": {
+      "quiz": 1,
+      "number": 9,
+      "question": "What would you do today?"
+    }
+  }
+]

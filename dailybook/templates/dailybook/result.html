@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="overlay"></div>
+<div class="container main-container">
+    <article class="row">
+        <!-- Page Title -->
+        <header class="row page-title mt-4 mb-3">
+            <div class="text-center">
+                <h3>It seems that based on your mood,<br>your daily category is...</h3>
+                <h1 class="white-shadow mt-4">{{result.category.name}}</h1>
+                <h3>({{result.point}} / {{questions_count}})</h3>
+            </div>
+        </header>
+        <section>
+            <div class="row">
+                <div class="center-container home-sub-title mb-3">
+                    <i class="fas fa-star me-3"></i>
+                    <h2 class="white-shadow">Your Daily Book</h2>
+                    <i class="fas fa-book ms-3"></i>
+                </div>
+                <div class="row">
+                    <div class="center-container">
+                        <div class="card h-100 border-0 card-shadow">
+                            <div class="card-body pb-0 mb-3 mt-1">
+                                <p class="mb-0 bold">{{ result.book.author }}</p>
+                                <p class="mb-0 bold">{{ result.book.name }}</p>
+                            </div>
+                            <div class="center-container ps-4 pe-4">
+                                <a href="{% url 'book_detail' result.book.id %}">
+                                    <img class="card-img-top img-fluid random-offer-img"
+                                         src="{% static '' %}img/{{ result.book.img_paths }}"
+                                         alt="{{ result.book.name }}">
+                                </a>
+                            </div>
+                            <div class="card-body pb-0 mb-4 mt-3">
+                                <p class="mb-0">{{ result.book.category.name }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+</div>
+{% endblock content %}

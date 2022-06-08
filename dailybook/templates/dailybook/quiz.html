@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="overlay"></div>
+<div class="container main-container">
+    <article class="row">
+        <!-- Page Title -->
+        <header class="row page-title mt-4 mb-3">
+            <div class="text-center">
+                <h1 class="logo-font mt-4">{{quiz_name}}</h1>
+            </div>
+        </header>
+        <section>
+        <!-- Quiz Starter Container - Rules & Game Start -->
+            {% if game_start is True %}
+            <div id="quiz-starter">
+                <h4 class="text-center text-uppercase bold">{{quiz.description|linebreaks}}</b></h4>
+                <div class="row mt-4 mb-4">
+                    <div class="center-container">
+                        <form method="POST">
+                        {% csrf_token %}
+                            <input type="submit" id='quiz_start' name='quiz_start'
+                                   class="btn btn btn-dark btn-lg large-btn" value="Start Daily Mood Quiz">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <!-- Quiz Container - Question & Answers -->
+            <div id="quiz-container">
+                {% if game_on is True %}
+                <!-- Question & Answers Card -->
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="card bold">
+                        <div class="col-9">
+                            <!-- Question -->
+                            <div class="row mb-2">
+                                <div class="col-12">
+                                    <p id="question-quiz">
+                                        {{current_question.number}}. {{current_question.question}}
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Answers -->
+                            {% for a in answers %}
+                             <div class="row mb-2">
+                                <div class="col-12">
+                                    <input type="radio" name="answers_options" id="{{a.category.name}}"
+                                           value="{{a.category.name}}" class="answer" required>
+                                    <label for="{{a.category.name}}" id="{{a.category.name}}_label"
+                                           class="answer_label">{{a.answer}}</label>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <!-- Next Question Button with inputs for holding/passing user results & current question's index number -->
+                    <div class="row mt-4" id="next-btn">
+                        <div class="col-12">
+                            <input type="number" id="count_crime_thriller" name="count_crime_thriller"
+                                   class="hidden" value="{{crime_thriller_count}}"/>
+                            <input type="number" id="count_comics_manga" name="count_comics_manga"
+                                   class="hidden" value="{{comics_manga_count}}"/>
+                            <input type="number" id="count_poetry_drama" name="count_poetry_drama"
+                                   class="hidden" value="{{poetry_drama_count}}"/>
+                            <input type="number" id="count_scifi_fantasy_horror" name="count_scifi_fantasy_horror"
+                                   class="hidden" value="{{scifi_fantasy_horror_count}}"/>
+                            <input type="number" id="current_index" name="current_index"
+                                   class="hidden" value="{{current_question.number}}"/>
+
+                            <input type="submit" id='next_question' name='next_question'
+                                   class="btn btn-lg btn-secondary" value="Next Question">
+                        </div>
+                    </div>
+                </form>
+                {% endif %}
+            </div>
+        </section>
+    </article>
+</div>
+{% endblock content %}

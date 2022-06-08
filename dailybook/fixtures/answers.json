@@ -1,0 +1,326 @@
+[
+  {
+    "pk": 1,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Melancholic",
+      "category": 3,
+      "question": 1 
+    }
+  },
+  {
+    "pk": 2,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Restless",
+      "category": 4,
+      "question": 1
+    }
+  },
+  {
+    "pk": 3,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Angry",
+      "category": 1,
+      "question": 1
+    }
+  },
+  {
+    "pk": 4,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Happy",
+      "category": 2,
+      "question": 1
+    }
+  },
+  {
+    "pk": 5,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Something black",
+      "category": 1,
+      "question": 2
+    }
+  },
+  {
+    "pk": 6,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Something extravagant",
+      "category": 4,
+      "question": 2
+    }
+  },
+  {
+    "pk": 7,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Something elegant",
+      "category": 3,
+      "question": 2
+    }
+  },
+  {
+    "pk": 8,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Something red",
+      "category": 2,
+      "question": 2
+    }
+  },
+  {
+    "pk": 9,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Something unusual",
+      "category": 4,
+      "question": 3
+    }
+  },
+    {
+    "pk": 10,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Something meaty",
+      "category": 1,
+      "question": 3
+    }
+  },
+  {
+    "pk": 11,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Something light",
+      "category": 3,
+      "question": 3
+    }
+  },
+  {
+    "pk": 12,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Something sweet",
+      "category": 2,
+      "question": 3
+    }
+  },
+  {
+    "pk": 13,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Coffee",
+      "category": 4,
+      "question": 4
+    }
+  },
+  {
+    "pk": 14,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Tea",
+      "category": 3,
+      "question": 4
+    }
+  },
+  {
+    "pk": 15,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Red Bull",
+      "category": 2,
+      "question": 4
+    }
+  },
+  {
+    "pk": 16,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Any alcohol",
+      "category": 1,
+      "question": 4
+    }
+  },
+  {
+    "pk": 17,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Paris",
+      "category": 3,
+      "question": 5
+    }
+  },
+  {
+    "pk": 18,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "London",
+      "category": 1,
+      "question": 5
+    }
+  },
+    {
+    "pk": 19,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Gotham City",
+      "category": 2,
+      "question": 5
+    }
+  },
+  {
+    "pk": 20,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Wonderland",
+      "category": 4,
+      "question": 5
+    }
+  },
+  {
+    "pk": 21,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "The Lover",
+      "category": 3,
+      "question": 6
+    }
+  },
+  {
+    "pk": 22,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "The Hero",
+      "category": 2,
+      "question": 6
+    }
+  },
+  {
+    "pk": 23,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "The Stranger",
+      "category": 4,
+      "question": 6
+    }
+  },
+  {
+    "pk": 24,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "The Killer",
+      "category": 1,
+      "question": 6
+    }
+  },
+  {
+    "pk": 25,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Fire",
+      "category": 1,
+      "question": 7
+    }
+  },
+  {
+    "pk": 26,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Water",
+      "category": 4,
+      "question": 7
+    }
+  },
+  {
+    "pk": 27,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Air",
+      "category": 2,
+      "question": 7
+    }
+  },
+    {
+    "pk": 28,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Earth",
+      "category": 3,
+      "question": 7
+    }
+  },
+  {
+    "pk": 29,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Classical",
+      "category": 3,
+      "question": 8
+    }
+  },
+  {
+    "pk": 30,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Metal",
+      "category": 1,
+      "question": 8
+    }
+  },
+  {
+    "pk": 31,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Pop",
+      "category": 2,
+      "question": 8
+    }
+  },
+  {
+    "pk": 32,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Alternative",
+      "category": 4,
+      "question": 8
+    }
+  },
+  {
+    "pk": 33,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Save this world from the end",
+      "category": 3,
+      "question": 9
+    }
+  },
+  {
+    "pk": 34,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Leave this world for another",
+      "category": 4,
+      "question": 9
+    }
+  },
+  {
+    "pk": 35,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Burn this world to ashes",
+      "category": 1,
+      "question": 9
+    }
+  },
+  {
+    "pk": 36,
+    "model": "dailybook.answer",
+    "fields": {
+      "answer": "Get know this world better",
+      "category": 3,
+      "question": 9
+    }
+  }
+]

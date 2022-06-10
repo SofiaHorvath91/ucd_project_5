@@ -6,6 +6,8 @@ from .forms import UserProfileForm
 
 from checkout.models import Order
 from feedback.models import Feedback, Recommendation
+from dailybook.models import Quiz, Result
+
 
 @login_required
 def profile(request):
@@ -15,15 +17,20 @@ def profile(request):
     context['orders'] = orders
     context['on_profile_page'] = True
 
+    quiz_qs_count = Quiz.objects.filter(name='Your Daily Book').first().questions.all().count()
+    context['quiz_qs_count'] = quiz_qs_count
+
     if request.user.is_superuser:
         # If user is admin (superuser), show all feedbacks
         # and all recommendations with Pending status, regardless of owner
         context['feedbacks'] = Feedback.objects.all()
         context['recommendations'] = Recommendation.objects.all()
+        context['dailybooks'] = Result.objects.all()
     else:
         # If user is standard user, show own feedbacks and recommendations
         context['feedbacks'] = Feedback.objects.filter(user=request.user)
         context['recommendations'] = Recommendation.objects.filter(user=request.user)
+        context['dailybooks'] = Result.objects.filter(user=request.user)
 
     if request.POST.get('profile-update-form'):
         form = UserProfileForm(request.POST, instance=profile)
@@ -43,11 +50,17 @@ def profile(request):
             feedback.delete()
             messages.success(request, 'Feedback was deleted.')
             return render(request, 'profiles/profile.html', context=context)
-        # Delete a recommendation, allowed only for recommendation owner
+        # Delete a recommendation, allowed only for recommendation owner and admin
         if request.POST.get('myrecommendations-to-delete'):
             recommendation = Recommendation.objects.filter(id=request.POST['myrecommendations-to-delete']).first()
             recommendation.delete()
             messages.success(request, 'Recommendation was deleted.')
+            return render(request, 'profiles/profile.html', context=context)
+        # Delete a daily book, allowed only for owner and
+        if request.POST.get('mydailybook-to-delete'):
+            dailybook = Result.objects.filter(id=request.POST['mydailybook-to-delete']).first()
+            dailybook.delete()
+            messages.success(request, 'Daily Book was deleted.')
             return render(request, 'profiles/profile.html', context=context)
         # Approve recommendation, allowed only for admin / superuser
         if request.POST.get('recommendations-to-approve') and request.user.is_superuser:

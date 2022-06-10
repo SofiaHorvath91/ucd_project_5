@@ -10,7 +10,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-lg-6">
-                <h4 class="text-dark white-shadow bold">Default Delivery Information</h4>
+                <h3 class="text-dark white-shadow bold">Default Delivery Information</h3>
                 <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
                     {% csrf_token %}
                     {{ form|crispy }}
@@ -18,7 +18,7 @@
                 </form>
             </div>
             <div class="col-12 col-lg-6">
-                <h4 class="text-dark white-shadow bold">Order History</h4>
+                <h3 class="text-dark white-shadow bold">Order History</h3>
                 <div class="order-history table-responsive">
                     <table class="table table-sm table-borderless">
                         <thead>
@@ -131,6 +131,67 @@
                         {% else %}
                         <div class="card row">
                             <h5 class="mt-2 mb-2">No recommendations yet.</h5>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <!-- List of daily books got by user via Daily Book Quiz
+            with link toward the Daily Book Quiz and Delete option-->
+            <div class="row mt-4 mb-3">
+                <div>
+                    <div>
+                        <h3 class="white-shadow">My Daily Books</h3>
+                        <div class="mb-3 mt-2">
+                            <div class="col-12">
+                                <a class="btn btn-dark" href="{% url 'quiz' %}">
+                                    New Daily Book
+                                </a>
+                            </div>
+                        </div>
+                        {% if dailybooks %}
+                        {% for b in dailybooks %}
+                        <div class="row">
+                            <article class="card mb-3">
+                                <div>
+                                    <h5 class="mt-2 mb-3">Daily Book #{{b.id}}</h5>
+                                </div>
+                                <div>
+                                    <p>Date : {{b.created}}</p>
+                                    <p>Result : {{b.point}} / {{quiz_qs_count}}</p>
+                                    <p>Your Daily Category : {{b.category.friendly_name}}</p>
+                                    <p>
+                                        <a href="{% url 'book_detail' b.book.id %}" class="text-dark">
+                                            <strong>
+                                            Your Daily Book : {{b.book.author}} - {{b.book.name}}
+                                            </strong>
+                                        </a>
+                                    </p>
+                                </div>
+                                <div>
+                                    <div class="center-container">
+                                        {% if request.user == b.user %}
+                                        <form class="mb-2 me-1" method="POST">
+                                            {% csrf_token %}
+                                            <div>
+                                                <div class="col-12">
+                                                    <input type="hidden" id="mydailybook-to-delete"
+                                                           name="mydailybook-to-delete"
+                                                           value="{{b.id}}">
+                                                    <input type="submit" value="Delete"
+                                                           class="btn btn-md btn-danger">
+                                                </div>
+                                            </div>
+                                        </form>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <div class="card row">
+                            <h5 class="mt-2 mb-2">No daily books yet.</h5>
                         </div>
                         {% endif %}
                     </div>

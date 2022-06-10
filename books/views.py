@@ -62,4 +62,10 @@ def book_detail(request, book_id):
         'book': book,
     }
 
+    if request.POST.get('book-to-delete'):
+        book_delete = Book.objects.filter(id=request.POST['book-to-delete']).first()
+        book_delete.delete()
+        messages.success(request, 'Book was deleted.')
+        return render(request, 'books/books.html', context=context)
+
     return render(request, 'books/book_detail.html', context)

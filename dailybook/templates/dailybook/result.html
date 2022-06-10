@@ -34,7 +34,16 @@
                                 </a>
                             </div>
                             <div class="card-body pb-0 mb-4 mt-3">
-                                <p class="mb-0">{{ result.book.category.name }}</p>
+                                <p class="mb-0">{{ result.book.category.friendly_name }}</p>
+                                <p class="mb-0">${{ result.book.price }}</p>
+                                {% if result.book.book_depository_stars %}
+                                    <p class="text-dark bold">
+                                        <i class="fas fa-star me-2"></i>
+                                        {{ result.book.book_depository_stars }} / 5
+                                    </p>
+                                {% else %}
+                                    <p class="text-dark bold">No Rating</p>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

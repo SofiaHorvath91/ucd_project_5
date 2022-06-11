@@ -8,6 +8,7 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
 # Testing Quiz / Question / Answer / Result Models
 class QuizQuestionAnswerResultModelsTest(TestCase):
     @classmethod
@@ -87,6 +88,7 @@ class QuizQuestionAnswerResultModelsTest(TestCase):
         self.assertTrue(isinstance(result.point, int))
         self.assertTrue(isinstance(result.result, str))
         self.assertTrue(isinstance(result.created, datetime))
+        self.assertEqual(result.created.date(), datetime.today().date())
 
     def test_models_relations(self):
         quiz = Quiz.objects.get(id=1)
@@ -104,6 +106,9 @@ class QuizQuestionAnswerResultModelsTest(TestCase):
         self.assertEqual(result_answer_count, 1)
         self.assertEqual(result_book_count, 1)
         self.assertEqual(result_user_count, 1)
+        self.assertEqual(quiz.results.first().user.username, "tester")
+        self.assertEqual(quiz.results.first().user.email, "test@test.com")
+
 
 
 

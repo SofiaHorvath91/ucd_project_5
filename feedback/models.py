@@ -13,7 +13,7 @@ User = get_user_model()
 class Feedback(models.Model):
     rating_point = models.IntegerField(null=True, blank=True)
     rating_description = models.CharField(max_length=255, blank=True, null=True)
-    content = models.TextField(blank=True, null=True)
+    content = models.TextField(max_length=355, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
 
@@ -28,6 +28,7 @@ class Recommendation(models.Model):
     title = models.CharField(max_length=254, null=True)
     author = models.CharField(max_length=254)
     category = models.CharField(max_length=254, null=True)
+    created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):

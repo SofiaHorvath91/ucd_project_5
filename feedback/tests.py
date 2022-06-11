@@ -48,7 +48,6 @@ class FeedbackModelTest(TestCase):
     def test_created_date(self):
         feedback = Feedback.objects.get(id=1)
         self.assertTrue(isinstance(feedback.created, datetime))
-        self.assertEqual(feedback.created.date(), datetime.today().date())
 
     def test_user(self):
         feedback = Feedback.objects.get(id=1)
@@ -69,6 +68,11 @@ class RecommendationModelTest(TestCase):
                                       category='SciFi-Fantasy-Horror',
                                       created=datetime.now(),
                                       user=user)
+
+    def test_recommendation_name(self):
+        recommendation = Recommendation.objects.get(id=1)
+        recommendation_name = recommendation.author + " : " + recommendation.title
+        self.assertEqual(str(recommendation), recommendation_name)
 
     def test_text_char_fields(self):
         recommendation = Recommendation.objects.get(id=1)
@@ -96,7 +100,6 @@ class RecommendationModelTest(TestCase):
     def test_created_date(self):
         recommendation = Recommendation.objects.get(id=1)
         self.assertTrue(isinstance(recommendation.created, datetime))
-        self.assertEqual(recommendation.created.date(), datetime.today().date())
 
     def test_user(self):
         recommendation = Recommendation.objects.get(id=1)

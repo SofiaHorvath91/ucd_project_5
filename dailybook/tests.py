@@ -63,10 +63,15 @@ class QuizQuestionAnswerResultModelsTest(TestCase):
         max_length_answer_answer = answer._meta.get_field('answer').max_length
         max_length_result_result = result._meta.get_field('result').max_length
         self.assertEqual(max_length_quiz_name, 254)
+        self.assertLess(len(quiz.name), max_length_quiz_name)
         self.assertEqual(max_length_quiz_description, 354)
+        self.assertLess(len(quiz.description), max_length_quiz_description)
         self.assertEqual(max_length_question_question, 254)
+        self.assertLess(len(question.question), max_length_question_question)
         self.assertEqual(max_length_answer_answer, 254)
+        self.assertLess(len(answer.answer), max_length_answer_answer)
         self.assertEqual(max_length_result_result, 354)
+        self.assertLess(len(result.result), max_length_result_result)
 
     def test_models_fields_instances(self):
         quiz = Quiz.objects.get(id=1)
@@ -88,7 +93,6 @@ class QuizQuestionAnswerResultModelsTest(TestCase):
         self.assertTrue(isinstance(result.point, int))
         self.assertTrue(isinstance(result.result, str))
         self.assertTrue(isinstance(result.created, datetime))
-        self.assertEqual(result.created.date(), datetime.today().date())
 
     def test_models_relations(self):
         quiz = Quiz.objects.get(id=1)

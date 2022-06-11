@@ -5,8 +5,6 @@ from django.test import TestCase
 from .models import Book, Category
 
 
-# Create your tests here.
-
 # Testing Category Model
 class CategoryModelTest(TestCase):
     @classmethod

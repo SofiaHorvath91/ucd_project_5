@@ -5,7 +5,7 @@ var elements = stripe.elements();
 var style = {
     base: {
         color: '#000',
-        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontFamily: 'Philosopher, sans-serif',
         fontSmoothing: 'antialiased',
         fontSize: '16px',
         '::placeholder': {
@@ -24,13 +24,7 @@ card.mount('#card-element');
 card.addEventListener('change', function (event) {
     var errorDiv = document.getElementById('card-errors');
     if (event.error) {
-        var html = `
-            <span class="icon" role="alert">
-                <i class="fas fa-times"></i>
-            </span>
-            <span>${event.error.message}</span>
-        `;
-        $(errorDiv).html(html);
+        setErrorDiv(errorDiv, event.error.message);
     } else {
         errorDiv.textContent = '';
     }
@@ -88,12 +82,7 @@ form.addEventListener('submit', function(ev) {
         }).then(function(result) {
             if (result.error) {
                 var errorDiv = document.getElementById('card-errors');
-                var html = `
-                    <span class="icon" role="alert">
-                    <i class="fas fa-times"></i>
-                    </span>
-                    <span>${result.error.message}</span>`;
-                $(errorDiv).html(html);
+                setErrorDiv(errorDiv, event.error.message);
                 $('#payment-form').fadeToggle(100);
                 $('#loading-overlay').fadeToggle(100);
                 card.update({ 'disabled': false});
@@ -109,3 +98,13 @@ form.addEventListener('submit', function(ev) {
         location.reload();
     })
 });
+
+function setErrorDiv(errorDiv, error){
+    var html = `
+        <span class="icon" role="alert">
+            <i class="fas fa-times"></i>
+        </span>
+        <span>${error}</span>
+    `;
+     errorDiv.innerHTML = html;
+}

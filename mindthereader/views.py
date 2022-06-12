@@ -135,6 +135,10 @@ def signout(request):
         return redirect('mindthereader/logout.html')
 
 
+def entry_not_found(request, exception, template_name='404.html'):
+    return render(request, template_name)
+
+
 # Helper methods
 
 # Helper for global search

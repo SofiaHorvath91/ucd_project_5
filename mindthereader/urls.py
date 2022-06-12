@@ -12,3 +12,5 @@ urlpatterns = [
     path('login/', signin, name='login'),
     path('logout/', signout, name='logout'),
 ]
+
+handler404 = 'mindthereader.views.entry_not_found'

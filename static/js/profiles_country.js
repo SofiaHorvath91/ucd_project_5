@@ -1,5 +1,5 @@
 /* Constant to pass jQuery for testing with Jest (book_quantity.test.js), to be commented out in Production */
-const $ = require('jquery');
+// const $ = require('jquery');
 
 let countrySelected = $('#id_basic_country').val();
 if(!countrySelected) {

@@ -7,13 +7,13 @@
         <!-- Page Title = Site Title as Home page -->
         <header class="row page-title mt-4 mb-3">
             <div class="text-center mb-4">
-                <h1 class="site-title">Mind The Reader</h1>
+                <h1 class="site-title mb-3">Mind The Reader<br>Bookshop</h1>
                 <h4 class="text-uppercase bold">Your little bookshop of magic</h4>
             </div>
             <div class="row">
                 <div class="center-container">
                      <img class="site-icon"
-                          src="{% static '' %}img/icon-base.png" alt="{{ book.name }}">
+                          src="{% static '' %}img/icon-base.png" alt="Mind The Reader - Your Little Bookshop of Magic">
                 </div>
             </div>
         </header>
@@ -22,13 +22,13 @@
             <div class="row mt-2 mb-4">
                 <h2 class="text-center white-shadow site-intro">
                     Let your mind take a break from reality,
-                    <br>find your special story and discover a new world!
+                    <br>find your special book for today and discover a new world of imagination!
                 </h2>
             </div>
             <div class="row">
                 <div class="center-container home-sub-title text-uppercase mb-4">
                     <i class="fas fa-star me-3"></i>
-                    <p>Find Your Story</p>
+                    <h3>Find Your Story</h3>
                     <i class="fas fa-book ms-3"></i>
                 </div>
             </div>
@@ -41,8 +41,8 @@
                 <div class="row">
                    <div class="center-container home-btns mt-3">
                         {% if request.user.is_authenticated %}
-                            <a href="{% url 'books' %}" class="btn btn-dark btn-lg me-2">My Profile</a>
-                            <a href="{% url 'profile' %}" class="btn btn-dark btn-lg ms-2">Logout</a>
+                            <a href="{% url 'profile' %}" class="btn btn-dark btn-lg me-2">Profile</a>
+                            <a href="{% url 'logout' %}" class="btn btn-dark btn-lg ms-2">Logout</a>
                         {% else %}
                             <a href="{% url 'signup' %}" class="btn btn-dark btn-lg me-1">Register</a>
                             <a href="{% url 'login' %}" class="btn btn-dark btn-lg ms-1">Login</a>
@@ -53,7 +53,7 @@
             <div class="row mb-5">
                 <div class="center-container home-sub-title mb-3">
                     <i class="fas fa-calendar me-3"></i>
-                    <p>Get Your Daily Book</p>
+                    <h3>Get Your Daily Book</h3>
                     <i class="fas fa-question ms-3"></i>
                 </div>
                 <div class="row mb-3">
@@ -73,7 +73,7 @@
             <div class="row">
                 <div class="center-container home-sub-title mb-3">
                     <i class="fas fa-book-open me-3"></i>
-                    <p>Have You Read This ?</p>
+                    <h4>Have You Read This ?</h4>
                     <i class="fas fa-eye ms-3"></i>
                 </div>
                 <div class="row">
@@ -98,14 +98,14 @@
                     <div class="row mb-3">
                         <div class="center-container home-sub-title text-uppercase">
                             <i class="fas fa-thumbs-up me-3"></i>
-                            <p>Like our shop ?</p>
+                            <h3>Like our shop ?</h3>
                             <i class="fas fa-heart ms-3"></i>
                         </div>
                     </div>
                     <div class="row mt-2 mb-4">
                         <div class="center-container home-sub-title mb-3">
                             <i class="fas fa-comment me-3"></i>
-                            <p>Leave Your Thoughts</p>
+                            <h4>Leave Your Thoughts</h4>
                             <i class="fas fa-pen ms-3"></i>
                         </div>
                         <div class="row home-btns">
@@ -118,7 +118,7 @@
                     </div>
                     <div class="center-container mt-2 mb-3 home-sub-title">
                         <i class="fas fa-share me-3"></i>
-                        <p>Share Site</p>
+                        <h4>Share Site</h4>
                         <i class="fas fa-cloud ms-3"></i>
                     </div>
                 </div>

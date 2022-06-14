@@ -43,6 +43,7 @@ main{
 
 a{
     text-decoration:none !important;
+    cursor: pointer !important;
 }
 
 hr{
@@ -74,6 +75,10 @@ hr, label,
     color: black;
 }
 
+hr{
+    background-color: transparent !important;
+}
+
 p, label{
     font-size:18px;
 }
@@ -95,46 +100,20 @@ p, label{
     box-shadow: 1px 1px black !important;
 }
 
-.card-shadow{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+.center-container {
+  margin: auto;
+  display: flex;
+  width: auto;
+  align-items: center;
+  text-align: center;
 }
 
-.site-title{
-    color: white;
-    font-size: 4rem;
-    text-shadow: var(--strong-text-shadow);
+
+.main-container{
+    margin-top: 10rem !important;
 }
 
-.site-icon{
-    width: 150px;
-}
-
-.random-offer-img{
-    height: 250px;
-    width: auto;
-    background-color: transparent;
-}
-
-.home-sub-title{
-    font-weight: bolder;
-    font-size: 2rem;
-}
-
-.home-sub-title p{
-    font-size: 2.5rem;
-    color: white;
-    text-shadow: var(--strong-text-shadow);
-    margin-bottom: 0;
-}
-
-.home-btns a{
-    width: 250px;
-    font-size: 1.8rem;
-}
-
-/* Navbar => Source / Inspiration :
-https://getbootstrap.com/docs/4.4/components/navs/
-https://www.w3schools.com/howto/howto_js_navbar_sticky.asp */
+/* Navbar => Source / Inspiration : https://getbootstrap.com/docs/5.2/components/navbar/ */
 
 .icon {
     align-items: center;
@@ -186,7 +165,47 @@ https://www.w3schools.com/howto/howto_js_navbar_sticky.asp */
   color: white !important;
 }
 
-/* Footer Social Sharing buttons => Source / Inspiration : https://sharingbuttons.io/ */
+/* Home Page */
+
+.card-shadow{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+}
+
+.site-title{
+    color: white;
+    font-size: 4rem;
+    text-shadow: var(--strong-text-shadow);
+}
+
+.site-icon{
+    width: 150px;
+}
+
+.random-offer-img{
+    height: 250px;
+    width: auto;
+    background-color: transparent;
+}
+
+.home-sub-title{
+    font-weight: bolder;
+    font-size: 2rem;
+}
+
+.home-sub-title h4,
+.home-sub-title h3{
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: var(--strong-text-shadow);
+    margin-bottom: 0;
+}
+
+.home-btns a{
+    width: 250px;
+    font-size: 1.8rem;
+}
+
+/* Home Page : Social Sharing buttons => Source / Inspiration : https://sharingbuttons.io/ */
 
 .resp-sharing-button {
   border-radius: 5px;
@@ -248,23 +267,7 @@ https://www.w3schools.com/howto/howto_js_navbar_sticky.asp */
   border-color: var(--whatsapp);
 }
 
-/* Generally used */
-
-.center-container {
-  margin: auto;
-  display: flex;
-  width: auto;
-  align-items: center;
-  text-align: center;
-}
-
-hr{
-    background-color: transparent !important;
-}
-
-.main-container{
-    margin-top: 10rem !important;
-}
+/* Messages => Source / Inspiration : https://css-tricks.com/snippets/css/css-triangle/ */
 
 .message-container {
     position: fixed;
@@ -287,7 +290,6 @@ hr{
     font-size: 1.5rem !important;
 }
 
-/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
 .arrow-up {
     width: 0;
     height: 0;
@@ -299,7 +301,6 @@ hr{
     right: 36px;
 }
 
-/* Convenience classes - colors copied from Bootstrap */
 .arrow-success {
     border-bottom-color: #28a745 !important;
 }
@@ -316,7 +317,7 @@ hr{
     border-bottom-color: #343a40 !important;
 }
 
-/* Stripe Checkout */
+/* Checkout Page - Stripe */
 
 .StripeElement,
 .stripe-style-input {
@@ -388,7 +389,7 @@ select option[value=""] {
 /* Profiles */
 
 .order-history {
-    max-height: 416px; /* height of profile form + submit button */
+    max-height: 416px;
     overflow-y: auto;
 }
 
@@ -409,7 +410,7 @@ select option[value=""] {
     color: #aab7c4;
 }
 
-/* Star-based Feedback => Source / Inspiration : https://github.com/LunarLogic/starability */
+/* Feedback Page => Source / Inspiration : https://github.com/LunarLogic/starability */
 
 #ratings-div{
     background-color: rgba(255,255,255,0.8);
@@ -697,7 +698,7 @@ select option[value=""] {
 
 }
 
-@media only screen and (max-width: 991.5px) and (min-width: 401px) {
+@media only screen and (max-width: 991.5px) and (min-width: 501px) {
     .nav-link{
         padding: 0.5rem !important;
     }
@@ -727,7 +728,8 @@ select option[value=""] {
     }
 
     .home-sub-title,
-    .home-sub-title p{
+    .home-sub-title h3,
+    .home-sub-title h4{
         font-size: 1.8rem !important;
     }
 
@@ -746,7 +748,15 @@ select option[value=""] {
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
+    .toast{
+        width: 200px;
+    }
+
+    p, th {
+    font-size: 14px !important;
+    }
+
     .main-container{
         margin-top: 5rem !important;
     }
@@ -760,7 +770,7 @@ select option[value=""] {
     }
 
     .nav-link p{
-        font-size: 10px;
+        font-size: 10px !important;
     }
 
     #site-banner{
@@ -776,7 +786,8 @@ select option[value=""] {
     }
 
     .home-sub-title,
-    .home-sub-title p{
+    .home-sub-title h4,
+    .home-sub-title h3{
         font-size: 1.3rem !important;
     }
 
@@ -792,5 +803,20 @@ select option[value=""] {
     .resp-sharing-button__icon svg {
       width: 1.5em;
       height: 1em;
+    }
+
+    .bag-price{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .bag-subtotal-price{
+        display: none;
+    }
+
+    #btn-keep-shopping,
+    #btn-secure-checkout{
+        font-size: 14px;
     }
 }

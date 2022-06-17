@@ -267,6 +267,12 @@ p, label{
   border-color: var(--whatsapp);
 }
 
+/* Books / Book Detail */
+
+#book-detail-img{
+    margin-top:0;
+}
+
 /* Messages => Source / Inspiration : https://css-tricks.com/snippets/css/css-triangle/ */
 
 .message-container {
@@ -803,6 +809,10 @@ select option[value=""] {
     .resp-sharing-button__icon svg {
       width: 1.5em;
       height: 1em;
+    }
+
+    #book-detail-img{
+        margin-bottom:2rem;
     }
 
     .bag-price{

@@ -1,32 +1,38 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <div class="overlay"></div>
-    <div class="container main-container">
-        <div class="row">
+<div class="overlay"></div>
+<div class="container main-container">
+    <article class="row">
+        <header class="row">
             <div class="col">
                 <h1 class="logo-font mb-4 mt-4">My Profile</h1>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-lg-6">
-                <h3 class="text-dark white-shadow bold">Default Delivery Information</h3>
-                <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <button class="btn btn-dark btn-lg mt-2">Update Information</button>
-                </form>
-            </div>
-            <div class="col-12 col-lg-6">
-                <h3 class="text-dark white-shadow bold">Order History</h3>
-                <div class="order-history table-responsive">
+        </header>
+        <section class="row">
+            <article class="col-12 col-lg-6">
+                <header>
+                    <h3 class="text-dark white-shadow bold">Default Delivery Information</h3>
+                </header>
+                <section class="mt-3">
+                    <form action="{% url 'profile' %}" method="POST">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <input type="hidden" id="profile-update-form" name="profile-update-form">
+                        <input type="submit" class="btn btn-dark btn-lg mt-2" value="Update Information">
+                    </form>
+                </section>
+            </article>
+            <article class="col-12 col-lg-6">
+                <header>
+                    <h3 class="text-dark white-shadow bold">Order History</h3>
+                </header>
+                <section class="order-history table-responsive">
                     <table class="table table-sm table-borderless">
                         <thead>
                             <tr>
                                 <th>Order Number</th>
                                 <th>Date</th>
-                                <th>Items</th>
-                                <th>Order Total</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,222 +41,217 @@
                                     <td>
                                         <a href="{% url 'order_history' order.order_number %}"
                                         title="{{ order.order_number }}">
-                                            {{ order.order_number|truncatechars:6 }}
+                                            {{ order.order_number|truncatechars:10 }}
                                         </a>
                                     </td>
-                                    <td>{{ order.date }}</td>
-                                    <td>
-                                        <ul class="list-unstyled">
-                                            {% for item in order.lineitems.all %}
-                                                <li class="small">
-                                                    {{ item.book.name }} x{{ item.quantity }}
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </td>
-                                    <td>${{ order.grand_total }}</td>
+                                    <td>{{ order.date|date:'Y-m-d' }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
                     </table>
-                </div>
-            </div>
-            <!-- List of item recommendations made by user with links for each toward the Blog page
+                </section>
+            </article>
+            <!-- List of book recommendations made by user with links for each toward the Feedback page
              where user can create new recommendation and Delete option-->
-            <div class="row mt-4 mb-3">
-                <div>
-                    <div>
-                        <h3 class="white-shadow">My Recommendations</h3>
-                        <div class="mb-3 mt-2">
-                            <div class="col-12">
-                                <a class="btn btn-dark" href="{% url 'feedback' %}">
-                                    Create New
-                                </a>
-                            </div>
+            <article class="row mt-4 mb-3">
+                <header>
+                    <h3 class="white-shadow">My Recommendations</h3>
+                    <div class="mb-3 mt-2">
+                        <div class="col-12">
+                            <a class="btn btn-dark" href="{% url 'feedback' %}">
+                                Create New
+                            </a>
                         </div>
-                        {% if recommendations %}
-                        {% for r in recommendations %}
-                        <div class="row">
-                            <article class="card mb-3">
-                                <div>
-                                    <h5 class="mt-2 mb-3">Recommendation #{{r.id}}</h5>
-                                </div>
-                                <div>
-                                    <p>Title : {{r.title}}</p>
-                                    <p>Author : {{r.author}}</p>
-                                    <p>Category : {{r.category}}</p>
-                                    <p>Status : {{r.status}}</p>
-                                </div>
-                                <div>
-                                    <div class="center-container">
-                                        {% if request.user == r.user %}
-                                        <form class="mb-2 me-1" method="POST">
-                                            {% csrf_token %}
-                                            <div>
-                                                <div class="col-12">
-                                                    <input type="hidden" id="myrecommendations-to-delete"
-                                                           name="myrecommendations-to-delete"
-                                                           value="{{r.id}}">
-                                                    <input type="submit" value="Delete"
-                                                           class="btn btn-md btn-danger">
-                                                </div>
-                                            </div>
-                                        </form>
-                                        {% endif %}
-                                        {% if request.user.is_superuser and r.status == 'Pending' %}
-                                        <form class="mb-2 me-1" method="POST">
-                                            {% csrf_token %}
-                                            <div>
-                                                <div class="col-12">
-                                                    <input type="hidden" id="recommendations-to-approve"
-                                                           name="recommendations-to-approve"
-                                                           value="{{r.id}}">
-                                                    <input type="submit" value="Approve"
-                                                           class="btn btn-md btn-dark">
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <form class="mb-2 me-1" method="POST">
-                                            {% csrf_token %}
-                                            <div>
-                                                <div class="col-12">
-                                                    <input type="hidden" id="recommendations-to-reject"
-                                                           name="recommendations-to-reject"
-                                                           value="{{r.id}}">
-                                                    <input type="submit" value="Reject"
-                                                           class="btn btn-md btn-danger">
-                                                </div>
-                                            </div>
-                                        </form>
-                                        {% endif %}
+                    </div>
+                </header>
+                {% if recommendations %}
+                {% for r in recommendations %}
+                <section class="row card mb-3">
+                    <header class="row">
+                        <h5 class="mt-2 mb-3">Recommendation #{{r.id}}</h5>
+                    </header>
+                    <div class="row">
+                        <div>
+                            <p>Title : {{r.title}}</p>
+                            <p>Author : {{r.author}}</p>
+                            <p>Category : {{r.category}}</p>
+                            <p>Status : {{r.status}}</p>
+                        </div>
+                        <div>
+                            <div class="center-container">
+                                {% if request.user == r.user %}
+                                <form class="mb-2 me-1" method="POST">
+                                    {% csrf_token %}
+                                    <div>
+                                        <div class="col-12">
+                                            <input type="hidden" id="myrecommendations-to-delete"
+                                                   name="myrecommendations-to-delete"
+                                                   value="{{r.id}}">
+                                            <input type="submit" value="Delete"
+                                                   class="btn btn-md btn-danger">
+                                        </div>
                                     </div>
-                                </div>
-                            </article>
-                        </div>
-                        {% endfor %}
-                        {% else %}
-                        <div class="card row">
-                            <h5 class="mt-2 mb-2">No recommendations yet.</h5>
-                        </div>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-            <!-- List of daily books got by user via Daily Book Quiz
-            with link toward the Daily Book Quiz and Delete option-->
-            <div class="row mt-4 mb-3">
-                <div>
-                    <div>
-                        <h3 class="white-shadow">My Daily Books</h3>
-                        <div class="mb-3 mt-2">
-                            <div class="col-12">
-                                <a class="btn btn-dark" href="{% url 'quiz' %}">
-                                    New Daily Book
-                                </a>
-                            </div>
-                        </div>
-                        {% if dailybooks %}
-                        {% for b in dailybooks %}
-                        <div class="row">
-                            <article class="card mb-3">
-                                <div>
-                                    <h5 class="mt-2 mb-3">Daily Book #{{b.id}}</h5>
-                                </div>
-                                <div>
-                                    <p>Date : {{b.created}}</p>
-                                    <p>Result : {{b.point}} / {{quiz_qs_count}}</p>
-                                    <p>Your Daily Category : {{b.category.friendly_name}}</p>
-                                    <p>
-                                        <a href="{% url 'book_detail' b.book.id %}" class="text-dark">
-                                            <strong>
-                                            Your Daily Book : {{b.book.author}} - {{b.book.name}}
-                                            </strong>
-                                        </a>
-                                    </p>
-                                </div>
-                                <div>
-                                    <div class="center-container">
-                                        {% if request.user == b.user %}
-                                        <form class="mb-2 me-1" method="POST">
-                                            {% csrf_token %}
-                                            <div>
-                                                <div class="col-12">
-                                                    <input type="hidden" id="mydailybook-to-delete"
-                                                           name="mydailybook-to-delete"
-                                                           value="{{b.id}}">
-                                                    <input type="submit" value="Delete"
-                                                           class="btn btn-md btn-danger">
-                                                </div>
-                                            </div>
-                                        </form>
-                                        {% endif %}
+                                </form>
+                                {% endif %}
+                                {% if request.user.is_superuser and r.status == 'Pending' %}
+                                <form class="mb-2 me-1" method="POST">
+                                    {% csrf_token %}
+                                    <div>
+                                        <div class="col-12">
+                                            <input type="hidden" id="recommendations-to-approve"
+                                                   name="recommendations-to-approve"
+                                                   value="{{r.id}}">
+                                            <input type="submit" value="Approve"
+                                                   class="btn btn-md btn-dark">
+                                        </div>
                                     </div>
-                                </div>
-                            </article>
-                        </div>
-                        {% endfor %}
-                        {% else %}
-                        <div class="card row">
-                            <h5 class="mt-2 mb-2">No daily books yet.</h5>
-                        </div>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-            <!-- List of feedbacks made by user with links for each toward the Blog page where user can leave new
-             feedback and Delete option-->
-            <div class="mt-4 mb-3">
-                <h3 class="white-shadow">My Feedbacks</h3>
-                <div class="mb-3 mt-2">
-                    <div class="col-12">
-                        <a class="btn btn-dark" href="{% url 'feedback' %}">
-                            Create New
-                        </a>
-                    </div>
-                </div>
-                {% if feedbacks %}
-                {% for f in feedbacks %}
-                    <div class="card mb-3">
-                        <article class="row">
-                            <div>
-                                <h5 class="mt-2 feedback-post-title">
-                                    <strong>Feedback #{{f.id}}</strong>
-                                </h5>
-                            </div>
-                            <div>
-                                <p class="mt-1">By user : {{f.user}}</p>
-                                <p>Created on : {{f.created}}</p>
-                                <p>Rating : {{f.rating_point}} stars ({{f.rating_description}})</p>
-                                <p>Feedback :<br>{{f.content|default:"N/A"}}</p>
-                            </div>
-                        </article>
-                        <div class="row mb-2">
-                            <div class="col-12">
-                                <a class="btn btn-dark" href="{% url 'feedback' %}">
-                                    Go to Blog
-                                </a>
+                                </form>
+                                <form class="mb-2 me-1" method="POST">
+                                    {% csrf_token %}
+                                    <div>
+                                        <div class="col-12">
+                                            <input type="hidden" id="recommendations-to-reject"
+                                                   name="recommendations-to-reject"
+                                                   value="{{r.id}}">
+                                            <input type="submit" value="Reject"
+                                                   class="btn btn-md btn-danger">
+                                        </div>
+                                    </div>
+                                </form>
+                                {% endif %}
                             </div>
                         </div>
-                        <form method="POST">
-                            {% csrf_token %}
-                            <div class="row mb-2">
-                                <div class="col-12">
-                                    <input type="hidden" id="myfeedback-to-delete"
-                                           name="myfeedback-to-delete" value="{{f.id}}">
-                                    <input type="submit" value="Delete"
-                                           class="btn btn-md btn-danger">
-                                </div>
-                            </div>
-                        </form>
                     </div>
+                </section>
                 {% endfor %}
                 {% else %}
-                <div class="card row">
-                    <h5 class="mt-2 mb-2">No feedbacks yet.</h5>
-                </div>
+                <section class="card row">
+                    <header class="row">
+                        <h5 class="mt-2 mb-2">No recommendations yet.</h5>
+                    </header>
+                </section>
                 {% endif %}
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript" src="{% static 'js/profiles_country.js' %}"></script>
+            </article>
+            <!-- List of daily books got by user via Daily Book Quiz
+            with link toward the Daily Book Quiz and Delete option-->
+            <article class="row mt-4 mb-3">
+                <header>
+                    <h3 class="white-shadow">My Daily Books</h3>
+                    <div class="mb-3 mt-2">
+                        <div class="col-12">
+                            <a class="btn btn-dark" href="{% url 'quiz' %}">
+                                New Daily Book
+                            </a>
+                        </div>
+                    </div>
+                </header>
+                {% if dailybooks %}
+                    {% for b in dailybooks %}
+                    <section class="row card mb-3">
+                        <header class="row">
+                            <h5 class="mt-2 mb-3">Daily Book #{{b.id}}</h5>
+                        </header>
+                        <div class="row">
+                            <div>
+                                <p>Date : {{b.created}}</p>
+                                <p>Result : {{b.point}} / {{quiz_qs_count}}</p>
+                                <p>Your Daily Category : {{b.category.friendly_name}}</p>
+                                <p>
+                                    <a href="{% url 'book_detail' b.book.id %}" class="text-dark">
+                                        <strong>
+                                        Your Daily Book : {{b.book.author}} - {{b.book.name}}
+                                        </strong>
+                                    </a>
+                                </p>
+                            </div>
+                            <div>
+                                <div class="center-container">
+                                    {% if request.user == b.user %}
+                                    <form class="mb-2 me-1" method="POST">
+                                        {% csrf_token %}
+                                        <div>
+                                            <div class="col-12">
+                                                <input type="hidden" id="mydailybook-to-delete"
+                                                       name="mydailybook-to-delete"
+                                                       value="{{b.id}}">
+                                                <input type="submit" value="Delete"
+                                                       class="btn btn-md btn-danger">
+                                            </div>
+                                        </div>
+                                    </form>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    {% endfor %}
+                {% else %}
+                <section class="card row">
+                    <header class="row">
+                        <h5 class="mt-2 mb-2">No daily books yet.</h5>
+                    </header>
+                </section>
+                {% endif %}
+            </article>
+            <!-- List of feedbacks made by user with links for each toward the Blog page where user can leave new
+             feedback and Delete option-->
+            <article class="row mt-4 mb-3">
+                <header>
+                    <h3 class="white-shadow">My Feedbacks</h3>
+                    <div class="mb-3 mt-2">
+                        <div class="col-12">
+                            <a class="btn btn-dark" href="{% url 'feedback' %}">
+                                Create New
+                            </a>
+                        </div>
+                    </div>
+                </header>
+                {% if feedbacks %}
+                    {% for f in feedbacks %}
+                        <section class="row card mb-3">
+                            <header class="row">
+                                <div class="row">
+                                    <h5 class="mt-2 feedback-post-title">
+                                        <strong>Feedback #{{f.id}}</strong>
+                                    </h5>
+                                </div>
+                                <div>
+                                    <p class="mt-1">By user : {{f.user}}</p>
+                                    <p>Created on : {{f.created}}</p>
+                                    <p>Rating : {{f.rating_point}} stars ({{f.rating_description}})</p>
+                                    <p>Feedback :<br>{{f.content|default:"N/A"}}</p>
+                                </div>
+                            </header>
+                            <div class="row mb-2">
+                                <div class="col-12">
+                                    <a class="btn btn-dark" href="{% url 'feedback' %}">
+                                        Go to Blog
+                                    </a>
+                                </div>
+                            </div>
+                            <form class="row" method="POST">
+                                {% csrf_token %}
+                                <div class="row mb-2">
+                                    <div class="col-12">
+                                        <input type="hidden" id="myfeedback-to-delete"
+                                               name="myfeedback-to-delete" value="{{f.id}}">
+                                        <input type="submit" value="Delete"
+                                               class="btn btn-md btn-danger">
+                                    </div>
+                                </div>
+                            </form>
+                        </section>
+                    {% endfor %}
+                {% else %}
+                <section class="card row">
+                    <header class="row">
+                        <h5 class="mt-2 mb-2">No feedbacks yet.</h5>
+                    </header>
+                </section>
+                {% endif %}
+            </article>
+        </section>
+    </article>
+</div>
+<script type="text/javascript" src="{% static 'js/profiles_country.js' %}"></script>
 {% endblock %}

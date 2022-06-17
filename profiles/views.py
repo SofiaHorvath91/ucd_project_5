@@ -47,34 +47,39 @@ def profile(request):
         # Delete a feedback, allowed for feedback owner / request user and admin / superuser
         if request.POST.get('myfeedback-to-delete'):
             feedback = Feedback.objects.filter(id=request.POST['myfeedback-to-delete']).first()
-            feedback.delete()
-            messages.success(request, 'Feedback was deleted.')
+            if feedback is not None:
+                feedback.delete()
+                messages.success(request, 'Feedback was deleted.')
             return render(request, 'profiles/profile.html', context=context)
         # Delete a recommendation, allowed only for recommendation owner and admin
         if request.POST.get('myrecommendations-to-delete'):
             recommendation = Recommendation.objects.filter(id=request.POST['myrecommendations-to-delete']).first()
-            recommendation.delete()
-            messages.success(request, 'Recommendation was deleted.')
+            if recommendation is not None:
+                recommendation.delete()
+                messages.success(request, 'Recommendation was deleted.')
             return render(request, 'profiles/profile.html', context=context)
         # Delete a daily book, allowed only for owner and
         if request.POST.get('mydailybook-to-delete'):
             dailybook = Result.objects.filter(id=request.POST['mydailybook-to-delete']).first()
-            dailybook.delete()
-            messages.success(request, 'Daily Book was deleted.')
+            if dailybook is not None:
+                dailybook.delete()
+                messages.success(request, 'Daily Book was deleted.')
             return render(request, 'profiles/profile.html', context=context)
         # Approve recommendation, allowed only for admin / superuser
         if request.POST.get('recommendations-to-approve') and request.user.is_superuser:
             recommendation = Recommendation.objects.filter(id=request.POST['recommendations-to-approve']).first()
-            recommendation.status = 'Approved'
-            recommendation.save()
-            messages.success(request, 'You approved the recommendation.')
+            if recommendation is not None:
+                recommendation.status = 'Approved'
+                recommendation.save()
+                messages.success(request, 'You approved the recommendation.')
             return render(request, 'profiles/profile.html', context=context)
         # Reject recommendation, allowed only for admin / superuser
         if request.POST.get('recommendations-to-reject') and request.user.is_superuser:
             recommendation = Recommendation.objects.filter(id=request.POST['recommendations-to-reject']).first()
-            recommendation.status = 'Rejected'
-            recommendation.save()
-            messages.success(request, 'You rejected the recommendation.')
+            if recommendation is not None:
+                recommendation.status = 'Rejected'
+                recommendation.save()
+                messages.success(request, 'You rejected the recommendation.')
             return render(request, 'profiles/profile.html', context=context)
 
     return render(request, 'profiles/profile.html', context)

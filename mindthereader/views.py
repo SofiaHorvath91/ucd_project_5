@@ -20,7 +20,7 @@ def home(request):
     all_books = Book.objects.all()
 
     # Get random book for recommendation
-    if len(all_books) > 0:
+    if len(all_books) > 1:
         random_num = random.randint(0, (len(all_books) - 1))
         random_book = all_books[random_num]
         context['book'] = random_book

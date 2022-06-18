@@ -9,6 +9,9 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
+# Feedback Page (feedback.html)
+# => Page Aim :
+# Give ability to users to provide feedback and recommend book
 def feedback(request):
     context = {}
 

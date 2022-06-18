@@ -799,7 +799,7 @@ select option[value=""] {
 
     .home-btns a{
         width: 150px;
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .resp-sharing-button{
@@ -809,6 +809,10 @@ select option[value=""] {
     .resp-sharing-button__icon svg {
       width: 1.5em;
       height: 1em;
+    }
+
+    .result-btns{
+        font-size: 0.9rem;
     }
 
     #book-detail-img{

@@ -1,22 +1,16 @@
- /*
-* Disable +/- buttons outside 1-99 range.
-* If no size is passed to the function, the parameter will have a value of undefined by default,
-* which prevents any errors
-*/
-
 /* Constant to pass jQuery for testing with Jest (book_quantity.test.js), to be commented out in Production */
 //const $ = require('jquery');
 
 /* jQuery */
 
-// Ensure proper enabling/disabling of all inputs on page load
+// Ensure proper enabling/disabling of increase/decrease of quantity inputs on page load
 var allQtyInputs = $('.qty_input');
 for(var i = 0; i < allQtyInputs.length; i++){
     var itemId = $(allQtyInputs[i]).data('item_id');
     handleEnableDisable(itemId);
 }
 
-// Check enable/disable every time the input is changed
+// Enable/disable increase/decrease of quantity inputs every time the input is changed
 $('.qty_input').change(function() {
     var itemId = $(this).data('item_id');
     handleEnableDisable(itemId);
@@ -42,8 +36,10 @@ $('.decrement-qty').click(function(e) {
    handleEnableDisable(itemId);
 });
 
-/* Functions */
+/* Javascript Functions */
 
+/* Handle enablement/disablement of quantity increase/decrease option
+if quantity is on the edge of min-max range (1-99) */
 function handleEnableDisable(itemId) {
     var currentValue = parseInt($(`.id_qty_${itemId}`).val());
 
@@ -54,6 +50,7 @@ function handleEnableDisable(itemId) {
     $(`.increment-qty_${itemId}`).prop('disabled', plusDisabled);
 }
 
+/* Display new quantity input on UI upon user interaction */
 function setQuantityInput($, allQuantityInputs, closestInput, ops){
     var currentValue = parseInt($(closestInput).val());
     if(ops == 'minus'){

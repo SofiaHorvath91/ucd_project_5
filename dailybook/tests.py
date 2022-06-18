@@ -9,7 +9,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-# Testing Quiz / Question / Answer / Result Models
+# Unit tests for Quiz / Question / Answer / Result Models
 class QuizQuestionAnswerResultModelsTest(TestCase):
     @classmethod
     def setUpTestData(cls):

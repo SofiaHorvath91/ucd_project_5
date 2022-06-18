@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
+# Include URLs of applications in URLs of global project
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('oauth/', include('social_django.urls', namespace='social')),

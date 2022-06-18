@@ -2,6 +2,8 @@ from django import forms
 from .models import Profile
 
 
+# Form to capture/display delivery details on profile
+# (copied from latest order if selected)
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = Profile

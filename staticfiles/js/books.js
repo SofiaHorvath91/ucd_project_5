@@ -1,10 +1,15 @@
 /* Constant to pass jQuery for testing with Jest (book_quantity.test.js), to be commented out in Production */
 //const $ = require('jquery');
 
+/* jQuery */
+
+/* Scroll to top of page upon clicking on up arrow at page bottom */
 $('.btt-link').click(function(e) {
     window.scrollTo(0,0)
 })
 
+/* React on sorting criteria change
+and set new sorting condition by altering URL */
 $('#sort-selector').change(function() {
     var selector = $(this);
     var currentUrl = new URL(window.location);
@@ -13,6 +18,10 @@ $('#sort-selector').change(function() {
     window.location.replace(newURL);
 })
 
+/* Javascript Functions */
+
+/* Upon user interaction (chaning sort selector),
+set current sorting conditions and return altered URL */
 function setSearchValues(selectedVal, currentUrl){
     if(selectedVal != "reset"){
         var sort = selectedVal.split("_")[0];

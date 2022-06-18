@@ -20,7 +20,7 @@ class Feedback(models.Model):
 
 # Recommendation object/model
 # => Aim of object/model :
-# Capture details of item recommended by a standard user for the approval of admin user
+# Capture details of book recommended by a standard user for the approval of admin user
 # => Models/objects connected to Recommendation model/object via ForeignKey relation :
 # User (Owner)
 class Recommendation(models.Model):

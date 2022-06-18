@@ -2,16 +2,21 @@
 {% load static %}
 <html lang="en">
 <head>
+    <!-- Metadata -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Metadata for SEO puprose -->
     <meta name="description" content="Our little bookshop of magic helps your mind take a break from reality,
                                       find your special book and discover a new world of imagination!">
     <meta name="keywords" content="book, books, bookshop, read, reader, story, crime, thriller, fantasy,
                                   science fiction, horror, comics, manga, poetry, drama, dream, imagination, magic">
 
+    <!-- Site Title -->
     <title>Mind the Reader</title>
 
+    <!-- JS Scripts : jQuery, Bootstrap, FontAwesome, Google Fonts  -->
     <script src="https://js.stripe.com/v3/"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -23,24 +28,28 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
     <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
+
+    <!-- Style Links : Bootstrap, Google Fonts  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap" rel="stylesheet">
+    <!-- Custom Style Sheet  -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body class="background">
     <!-- Navigation Bar -->
      <header class="container-fluid fixed-top">
         <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
+            <!-- Site Icon  -->
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
                     <img class="logo-img" src="{% static '' %}img/icon.png" alt="Home">
                 </a>
             </div>
+            <!-- Global Search  -->
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <form method="GET" action="">
                     <div class="input-group w-100">
@@ -56,8 +65,10 @@
                     </div>
                 </form>
             </div>
+            <!-- Navbar Icons -->
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+                    <!-- My Account : Profile + Logout / Login + Signup -->
                     <li class="list-inline-item dropdown">
                         <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
@@ -76,6 +87,7 @@
                             {% endif %}
                         </div>
                     </li>
+                    <!-- Shopping Bag and current bag total -->
                     <li class="list-inline-item">
                         <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
                            href="{% url 'view_my_bag' %}">
@@ -91,6 +103,7 @@
                             </div>
                         </a>
                     </li>
+                    <!-- Feedback -->
                     <li class="list-inline-item">
                         <a class="text-black nav-link"
                            href="{% url 'feedback' %}">
@@ -104,6 +117,7 @@
                 </ul>
             </div>
         </div>
+         <!-- Navbar Items for Books / Categories (Desktop + Mobile views) -->
         <div class="row bg-white">
             <nav class="navbar navbar-expand-lg navbar-light w-100">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#books-nav"
@@ -114,6 +128,7 @@
                 {% include 'books-nav.html' %}
             </nav>
         </div>
+         <!-- Navbar Banner -->
         <div id="delivery-banner" class="row text-center">
             <div class="col bg-black text-white">
                 <h4 class="logo-font my-1" id="site-banner">Special Books for Special People - Free delivery over 50$!</h4>
@@ -121,6 +136,7 @@
         </div>
     </header>
 
+    <!-- Error / success messages -->
     {% if messages %}
         <div class="message-container">
             {% for message in messages %}
@@ -139,6 +155,7 @@
     {% block content %}
     {% endblock content %}
 
+    <!-- Local Javascript -->
     {% block postloadjs %}
     {% endblock %}
 
@@ -154,9 +171,9 @@
         </div>
     </footer>
 
+    <!-- Global script to show messages -->
     <script type="text/javascript">
         $('.toast').toast('show');
     </script>
-
 </body>
 </html>

@@ -5,7 +5,7 @@ from django.test import TestCase
 from .models import Book, Category
 
 
-# Testing Category Model
+# Unit tests for Category Model
 class CategoryModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -42,7 +42,7 @@ class CategoryModelTest(TestCase):
         self.assertEquals(verbose_name_plural, "Categories")
 
 
-# Testing Book Model
+# Unit tests for Book Model
 class BookModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):

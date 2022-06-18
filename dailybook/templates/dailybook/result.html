@@ -5,51 +5,91 @@
 <div class="container main-container">
     <article class="row">
         <!-- Page Title -->
-        <header class="row page-title mt-4 mb-3">
+        <header class="row page-title mt-4 mb-4">
+            <!-- Daily Category based on quiz result -->
             <div class="text-center">
                 <h3>It seems that based on your mood,<br>your daily category is...</h3>
                 <h1 class="white-shadow mt-4">{{result.category.name}}</h1>
                 <h3>({{result.point}} / {{questions_count}})</h3>
+                <h4 class="white-shadow mt-4">{{result.result}}</h4>
+            </div>
+            <!-- Daily Category image -->
+            <div class="row mt-4 mb-3">
+                <div class="center-container">
+                     <img class="site-icon"
+                          src="{% static '' %}img/{{ result.category.friendly_name }}.png"
+                          alt="Your Daily Category : {{ result.category.friendly_name }}">
+                </div>
             </div>
         </header>
-        <section>
-            <div class="row">
+        <!-- Daily Recommended Book -->
+        <section class="row">
+            <header class="row mb-3">
                 <div class="center-container home-sub-title mb-3">
                     <i class="fas fa-star me-3"></i>
-                    <h2 class="white-shadow">Your Daily Book</h2>
+                    <h2 class="white-shadow text-center">Your Daily Book</h2>
                     <i class="fas fa-book ms-3"></i>
                 </div>
-                <div class="row">
-                    <div class="center-container">
-                        <div class="card h-100 border-0 card-shadow">
-                            <div class="card-body pb-0 mb-3 mt-1">
-                                <p class="mb-0 bold">{{ result.book.author }}</p>
-                                <p class="mb-0 bold">{{ result.book.name }}</p>
-                            </div>
-                            <div class="center-container ps-4 pe-4">
-                                <a href="{% url 'book_detail' result.book.id %}">
-                                    <img class="card-img-top img-fluid random-offer-img"
-                                         src="{% static '' %}img/{{ result.book.img_paths }}"
-                                         alt="{{ result.book.name }}">
-                                </a>
-                            </div>
-                            <div class="card-body pb-0 mb-4 mt-3">
-                                <p class="mb-0">{{ result.book.category.friendly_name }}</p>
-                                <p class="mb-0">${{ result.book.price }}</p>
-                                {% if result.book.book_depository_stars %}
-                                    <p class="text-dark bold">
-                                        <i class="fas fa-star me-2"></i>
-                                        {{ result.book.book_depository_stars }} / 5
-                                    </p>
-                                {% else %}
-                                    <p class="text-dark bold">No Rating</p>
-                                {% endif %}
-                            </div>
+                <h5 class="text-center">(Date : {{ result.created }})</h5>
+            </header>
+            <div class="row mb-3">
+                <div class="center-container">
+                    <div class="card h-100 border-0 card-shadow">
+                        <div class="card-body pb-0 mb-3 mt-1">
+                            <p class="mb-0 bold">{{ result.book.author }}</p>
+                            <p class="mb-0 bold">{{ result.book.name }}</p>
+                        </div>
+                        <div class="center-container ps-4 pe-4">
+                            <a href="{% url 'book_detail' result.book.id %}">
+                                <img class="card-img-top img-fluid random-offer-img"
+                                     src="{% static '' %}img/{{ result.book.img_paths }}"
+                                     alt="{{ result.book.name }}">
+                            </a>
+                        </div>
+                        <div class="card-body pb-0 mb-2 mt-2">
+                            <p class="mb-0 bold">{{ result.book.category.friendly_name }}</p>
+                            <p class="mb-0 bold">${{ result.book.price }}</p>
+                            {% if result.book.book_depository_stars %}
+                                <p class="text-dark bold">
+                                    <i class="fas fa-star"></i>
+                                    {{ result.book.book_depository_stars }} / 5
+                                </p>
+                            {% else %}
+                                <p class="text-dark bold">No Rating</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        <!-- Action buttons -->
+        <footer class="row mt-4">
+            <!-- Go to Profile to see result in list -->
+            <div class="row">
+                <div class="center-container">
+                    <a href="{% url 'profile' %}" class="btn btn-dark btn-lg result-btns">
+                        Check Result on Profile
+                    </a>
+                </div>
+            </div>
+            <!-- Go to books page filtered by daily category -->
+            <div class="row mt-3">
+                <div class="center-container">
+                    <a href="{% url 'books' %}?category={{ result.category.friendly_name }}"
+                       class="btn btn-dark btn-lg result-btns">
+                        Other Books in Daily Category
+                    </a>
+                </div>
+            </div>
+            <!-- Restart quiz and get other daily recommended book -->
+            <div class="row mt-3">
+                <div class="center-container">
+                    <a href="{% url 'quiz' %}" class="btn btn-dark btn-lg result-btns">
+                        Get Other Daily Book
+                    </a>
+                </div>
+            </div>
+        </footer>
     </article>
 </div>
 {% endblock content %}

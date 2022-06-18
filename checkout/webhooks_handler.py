@@ -11,15 +11,18 @@ import json
 import time
 
 
+# Webhooks for payment with Stripe API
 class StripeWH_Handler:
     def __init__(self, request):
         self.request = request
 
+    # Handle receiving payment intent event
     def handle_event(self, event):
         return HttpResponse(
             content=f'Unhandled webhook received: {event["type"]}',
             status=200)
 
+    # Handle successful payment intent event
     def handle_payment_intent_succeeded(self, event):
         intent = event.data.object
         pid = intent.id
@@ -50,6 +53,7 @@ class StripeWH_Handler:
                 profile.basic_county = shipping_details.address.state
                 profile.save()
 
+        # Looking for existing order created upon checkout
         order_exists = False
         attempt = 1
         while attempt <= 5:
@@ -73,11 +77,13 @@ class StripeWH_Handler:
             except Order.DoesNotExist:
                 attempt += 1
                 time.sleep(1)
+        # Successful payment intent event if order exists
         if order_exists:
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
                 status=200)
         else:
+            # Create order if not existing
             order = None
             try:
                 order = Order.objects.create(
@@ -108,10 +114,12 @@ class StripeWH_Handler:
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
+        # Successful payment intent event if order not existing is created
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
             status=200)
 
+    # Handle failed payment intent event
     def handle_payment_intent_payment_failed(self, event):
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',

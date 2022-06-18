@@ -2,6 +2,7 @@ from django import forms
 from .models import Order
 
 
+# Form to capture order details while user is checking out
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order

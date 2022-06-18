@@ -8,6 +8,10 @@ from .models import Quiz, Question, Answer, Result
 from books.models import Book, Category
 
 
+# Daily Book Quiz Page (quiz.html)
+# => Page Aim :
+# Let user fill out a quiz to get her/his daily category
+# and a recommended book in this category
 def quiz(request):
     context = {}
 
@@ -17,7 +21,7 @@ def quiz(request):
     context['game_on'] = False
     context['game_end'] = False
 
-    # Selecting quiz from db and format quiz name for showing as site title
+    # Selecting quiz from db
     quiz = Quiz.objects.filter(name='Your Daily Book').first()
     questions_count = quiz.questions.all().count()
     context['quiz'] = quiz
@@ -25,7 +29,7 @@ def quiz(request):
 
     # Handling click on Start Daily Mood Quiz button
     if 'quiz_start' in request.POST:
-        # Setting house values to zero
+        # Setting category points to zero
         context['crime_thriller_count'] = 0
         context['comics_manga_count'] = 0
         context['poetry_drama_count'] = 0
@@ -73,10 +77,11 @@ def quiz(request):
 
         # Get current question index
         current_index = int(request.POST['current_index'])
+
         # Saving result to database
         # if current question index = last question number
         if current_index == questions_count:
-            # Get maximum category percentage and select house(s) for final result
+            # Get maximum category point and select category for final result
             category_points = {
                 "Crime-Thriller": crime_thriller_count,
                 "Comics-Manga": comics_manga_count,
@@ -91,18 +96,37 @@ def quiz(request):
                     result_category = k
             category = Category.objects.filter(name=result_category).first()
 
-            books_per_category = Book.objects.filter(category=category)
+            # Set wording for result based on maximum category
+            result_wording = ''
+            if str(category) == 'Crime-Thriller':
+                result_wording = "Seems like you are a bit blood-thirsty today! " \
+                         "This is all right, we all have some days when darkness and mystery feels good " \
+                         "- maybe the following book will fit right to your moody mood!"
+            if str(category) == 'Comics-Manga':
+                result_wording = "It looks like you fly as high as Superman today! " \
+                         "For this colorful and dynamic mood, what else would fit better " \
+                         "than a action-packed comic? Check out the following and get into the action!"
+            if str(category) == 'Poetry-Drama':
+                result_wording = "Feeling the spleen and the beauty today? " \
+                         "As it seems you are in a poetic mood with some taste for drama, " \
+                         "maybe the following book will help you dive a bit more into the depth of human soul."
+            if str(category) == 'SciFi-Fantasy-Horror':
+                result_wording = "It looks like you are disconnected from this world today! " \
+                         "To help you get out of reality and enter a new world of dreams and monsters, " \
+                         "we recommend the following book as the exit door to escape the daily routine."
 
+            # Select random book in maximum ctegory as daily book recommendation
+            books_per_category = Book.objects.filter(category=category)
             random_num = random.randint(0, (len(books_per_category) - 1))
             daily_book = books_per_category[random_num]
 
-            # Create result object in database
+            # Create result object in database and navigate to current result's record
             result = Result.objects.create(quiz=quiz,
                                            category=category,
                                            point=max_point,
                                            book=daily_book,
                                            user=request.user,
-                                           result="")
+                                           result=result_wording)
 
             return redirect('result', result_id=result.id)
 
@@ -124,6 +148,10 @@ def quiz(request):
     return render(request, 'dailybook/quiz.html', context=context)
 
 
+# Daily Book Quiz's Result Page (result.html)
+# => Page Aim :
+# Display result of current completion of Daily Mood quiz
+# => Presents daily recommended book in the daily category
 def result(request, result_id):
     context = {}
 
@@ -135,7 +163,9 @@ def result(request, result_id):
 
     return render(request, 'dailybook/result.html', context=context)
 
+
 # Helper functions
+
 
 # Increment category point with one
 # => Used in page view sorting

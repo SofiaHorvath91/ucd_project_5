@@ -6,6 +6,7 @@ from .views import(
     signup,
 )
 
+# Basic internal URLs of Mind The Reader project
 urlpatterns = [
     path('', home, name="home"),
     path('signup/', signup, name='signup'),
@@ -13,4 +14,5 @@ urlpatterns = [
     path('logout/', signout, name='logout'),
 ]
 
+# Configuration of custom 404 page
 handler404 = 'mindthereader.views.entry_not_found'

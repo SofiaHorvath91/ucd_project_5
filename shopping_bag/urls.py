@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+# Internal URLs of ShoppingBag application of Mind The Reader project
 urlpatterns = [
     path('', views.view_my_bag, name='view_my_bag'),
     path('add/<item_id>/', views.add_to_my_bag, name='add_to_my_bag'),

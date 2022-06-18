@@ -7,14 +7,13 @@ import dj_database_url
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')  # Configure path toward static html templates
 
-# Quick-start development settings - unsuitable for production
+# Quick-start development settings
 
 SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = True
 
 ALLOWED_HOSTS = ["serene-citadel-08400.herokuapp.com", "localhost"]
-
 
 # Application definition
 
@@ -50,6 +49,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ucd_project_5.urls'
 
+# Templates
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
@@ -75,13 +76,15 @@ TEMPLATES = [
     },
 ]
 
+# Message storage
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
+# Wsgi
 WSGI_APPLICATION = 'ucd_project_5.wsgi.application'
-
 
 # Database
 
+# Database sqlite3 for development / testing
 # DATABASES = {
 #      'default': {
 #          'ENGINE': 'django.db.backends.sqlite3',
@@ -89,6 +92,7 @@ WSGI_APPLICATION = 'ucd_project_5.wsgi.application'
 #      }
 # }
 
+# Database postgresql for production
 DATABASES = {
       'default': {
           'ENGINE': 'django.db.postgresql_psycopg2',
@@ -98,8 +102,9 @@ DATABASES = {
 db_from_env = dj_database_url.config(conn_max_age=500, ssl_require=True)
 DATABASES['default'].update(db_from_env)
 
-# Password validation
+# Password validation & Authentication
 
+# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -115,6 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Authentication backends for standard / social auth
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.google.GoogleOAuth2',
@@ -122,8 +128,10 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+# Authentication model
 AUTH_USER_MODEL = "auth.User"
 
+# Social authentication basic URLs
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'home'
 SOCIAL_AUTH_LOGIN_URL = '/'
 
@@ -188,6 +196,8 @@ STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 django_heroku.settings(config=locals(), staticfiles=False, logging=False)
+
+# Delivery and Stripe constants
 
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10

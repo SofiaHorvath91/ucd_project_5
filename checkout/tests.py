@@ -5,7 +5,6 @@ from uuid import UUID
 from django_countries.fields import Country
 
 from django.conf import settings
-from django.core.files.uploadedfile import SimpleUploadedFile
 from django.db.models import Sum
 from django.test import TestCase
 
@@ -17,7 +16,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-# Testing Order Model
+# Unit tests for Order Model
 class OrderModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -156,7 +155,7 @@ class OrderModelTest(TestCase):
         self.assertTrue(isinstance(order.grand_total, Decimal))
 
 
-# Testing OrderLine Model
+# Unit tests for OrderLineItem Model
 class OrderLineModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):

@@ -6,10 +6,14 @@ from django.contrib import messages
 from books.models import Book
 
 
+# Shopping Bag Page (my_bag.html)
+# => Page Aim :
+# Display current shopping bag with bag items
 def view_my_bag(request):
     return render(request, 'shopping_bag/my_bag.html')
 
 
+# Add items to shopping bag (or update if existing)
 def add_to_my_bag(request, item_id):
     book = get_object_or_404(Book, pk=item_id)
     quantity = int(request.POST.get('quantity'))
@@ -29,6 +33,7 @@ def add_to_my_bag(request, item_id):
     return redirect(redirect_url)
 
 
+# Update items in shopping bag (or remove if qty < 1)
 def adjust_my_bag(request, item_id):
     book = get_object_or_404(Book, pk=item_id)
     quantity = int(request.POST.get('quantity'))
@@ -49,6 +54,7 @@ def adjust_my_bag(request, item_id):
     return redirect(reverse('view_my_bag'))
 
 
+# Remove items from shopping bag
 def remove_from_my_bag(request, item_id):
     try:
         book = get_object_or_404(Book, pk=item_id)

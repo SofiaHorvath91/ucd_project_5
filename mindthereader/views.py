@@ -12,10 +12,14 @@ User = get_user_model()
 
 
 # Home Page (home.html)
+# => Page Aim :
+# Allow user to discover the
+# main objective of site and available actions quickly
 def home(request):
     context = {}
     all_books = Book.objects.all()
 
+    #
     random_num = random.randint(0, (len(all_books) - 1))
     random_book = all_books[random_num]
     context['book'] = random_book
@@ -135,6 +139,9 @@ def signout(request):
         return redirect('mindthereader/logout.html')
 
 
+# 404 Page (404.html)
+# => Page Aim :
+# Custom 404 page in case an entry is not found for better UX
 def entry_not_found(request, exception, template_name='404.html'):
     return render(request, template_name)
 

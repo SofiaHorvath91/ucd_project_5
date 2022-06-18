@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Feedback, Recommendation
 
+# Registering Feedback and Recommendation models on Django admin platform
 admin.site.register(Feedback)
 admin.site.register(Recommendation)

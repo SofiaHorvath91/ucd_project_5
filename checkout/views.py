@@ -15,6 +15,7 @@ import stripe
 import json
 
 
+# Handle Strip payment intent
 @require_POST
 def cache_checkout_data(request):
     try:
@@ -32,13 +33,19 @@ def cache_checkout_data(request):
         return HttpResponse(content=e, status=400)
 
 
+# Checkout Page (checkout.html)
+# => Page Aim :
+# Page to handle order completion / payment checkout
 def checking_out(request):
+    # Get Stripe keys from settings
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
+    # Handling order registration and payment checkout
     if request.method == 'POST':
         bag = request.session.get('bag', {})
 
+        # Validate order form
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
@@ -50,8 +57,9 @@ def checking_out(request):
             'street2': request.POST['street2'],
             'county': request.POST['county'],
         }
-
         order_form = OrderForm(form_data)
+
+        # If order form is valid, create order and proceed with checkout
         if order_form.is_valid():
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
@@ -75,18 +83,20 @@ def checking_out(request):
                     order.delete()
                     return redirect(reverse('view_my_bag'))
 
-            # Save the info to the user's profile if all is well
+            # Save delivery info to the user's profile
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
+        # Handling empty bag
         bag = request.session.get('bag', {})
         if not bag:
             messages.error(request, "There's nothing in your bag at the moment")
             return redirect(reverse('books'))
 
+        # Get shopping bag content from shopping_back/contexts.py and set Stripe info
         current_bag = my_bag_contents(request)
         total = current_bag['grand_total']
         stripe_total = round(total * 100)
@@ -96,6 +106,7 @@ def checking_out(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
+        # Get delivery information from current user's profile
         if request.user.is_authenticated:
             try:
                 profile = Profile.objects.get(user=request.user)
@@ -115,6 +126,7 @@ def checking_out(request):
         else:
             order_form = OrderForm()
 
+    # Validate Stripe public key
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
             Did you forget to set it in your environment?')
@@ -129,20 +141,21 @@ def checking_out(request):
     return render(request, template, context)
 
 
+# Checkout Success Page (checkout_success.html)
+# => Page Aim :
+# Page to confirm successful order completion / payment checkout
 def checkout_success(request, order_number):
-    """
-    Handle successful checkouts
-    """
+    # Handling successful checkout
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
     if request.user.is_authenticated:
         profile = Profile.objects.get(user=request.user)
-        # Attach the user's profile to the order
+        # Attach user profile to the order
         order.profile = profile
         order.save()
 
-        # Save the user's info
+        # Save the delivery information to user profile
         if save_info:
             profile_data = {
                 'basic_phone': order.phone,

@@ -9,7 +9,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-# Testing Profile Model
+# Unit tests for Profile Model
 class OrderModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):

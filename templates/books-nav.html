@@ -1,5 +1,7 @@
+<!-- Navbar for books -->
 <div class="collapse navbar-collapse" id="books-nav">
     <ul class="navbar-nav w-auto mx-auto">
+        <!-- Home Page -->
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5 bold"
                href="{% url 'home' %}" id="home-link"
@@ -7,7 +9,7 @@
                 Home
             </a>
         </li>
-
+        <!-- All Books with sorting options -->
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5 bold" href="#" id="all-books-link"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -20,7 +22,7 @@
                 <a href="{% url 'books' %}" class="dropdown-item">All Books</a>
             </div>
         </li>
-
+        <!-- Books of Category 'Crime-Thriller' -->
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5 bold"
                href="{% url 'books' %}?category=Crime-Thriller" id="crime-thriller-link"
@@ -28,7 +30,7 @@
                 Crime-Thriller
             </a>
         </li>
-
+        <!-- Books of Category 'Comics-Manga' -->
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5 bold"
                href="{% url 'books' %}?category=Comics-Manga" id="comics-manga-link"
@@ -36,7 +38,7 @@
                 Comics-Manga
             </a>
         </li>
-
+        <!-- Books of Category 'Poetry-Drama' -->
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black bold"
                href="{% url 'books' %}?category=Poetry-Drama" id="poetry-drama-link"
@@ -44,7 +46,7 @@
                 Poetry-Drama
             </a>
         </li>
-
+        <!-- Books of Category 'SciFi-Fantasy-Horror' -->
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black bold"
                href="{% url 'books' %}?category=SciFi-Fantasy-Horror" id="scifi-fantasy-horror-link"

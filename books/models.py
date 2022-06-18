@@ -1,7 +1,9 @@
 from django.db import models
-from django.core import serializers
 
 
+# Category object/model to connect to Book via OneToOne relation
+# => Aim of object/model :
+# Capture the different categories used to categorize books based on their genre
 class Category(models.Model):
     class Meta:
         verbose_name_plural = 'Categories'
@@ -16,6 +18,11 @@ class Category(models.Model):
         return self.friendly_name
 
 
+# Book object/model to represent a book
+# => Aim of object/model :
+# Capture details of a book which is offered for sale and can be purchased by user
+# => Models/objects connected to Book model/object via OneToOne relation :
+# Category to represent the genre of the book
 class Book(models.Model):
     id = models.AutoField(primary_key=True)
     image = models.URLField(max_length=1024, null=True, blank=True)

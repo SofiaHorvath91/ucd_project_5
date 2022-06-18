@@ -10,11 +10,14 @@
                 <h1 class="text-dark text-center mt-4">Book Detail</h1>
             </div>
         </header>
+        <!-- Book Cover Image -->
         <div class="center-container" id="book-detail-img">
             <img src="{% static '' %}img/{{ book.img_paths }}" alt="{{ book.author }} : {{ book.name }}">
         </div>
+        <!-- Book Details Section -->
         <section class="col-12 col-md-6">
             <div class="book-details-container mb-5">
+                <!-- Details of Current Book -->
                 <h4 class="mb-0"><b>{{ book.author }}</b></h4>
                 <h3 class="mb-0"><b>{{ book.name }}</b></h3>
                 <h5 class="lead mt-2 mb-2 text-left font-weight-bold">${{ book.price }}</h5>
@@ -30,6 +33,7 @@
                 {% else %}
                     <p class="small text-dark bold">No Rating</p>
                 {% endif %}
+                <!-- Delete option of book, available only for System Admin -->
                 {% if request.user.is_superuser %}
                     <form method="POST">
                         {% csrf_token %}
@@ -39,13 +43,16 @@
                                class="btn btn-sm btn-danger">
                     </form>
                 {% endif %}
+                <!-- Form to put the selected number of the current book into shopping bag -->
                 <form class="form" action="{% url 'add_to_my_bag' book.id %}" method="POST">
                     {% csrf_token %}
                     <div class="form-row">
                         <div class="col-12">
+                            <!-- Quantity selector for increase/decrease the number of books to put in bag -->
                             <p class="mt-3"><strong>Quantity:</strong></p>
                             <div class="form-group w-50">
                                 <div class="input-group input-group-{{ book.id }}">
+                                    <!-- Action button for quantity decrease -->
                                     <div class="input-group-prepend">
                                         <button class="decrement-qty btn btn-black rounded-0 decrement-qty_{{ book.id }}"
                                             data-item_id="{{ book.id }}" id="decrement-qty_{{ book.id }}">
@@ -54,10 +61,12 @@
                                             </span>
                                         </button>
                                     </div>
+                                    <!-- Current quantity -->
                                     <input class="form-control qty_input id_qty_{{ book.id }}" type="number"
                                         name="quantity" value="1" min="1" max="99"
                                         data-item_id="{{ book.id }}"
                                         id="id_qty_{{ book.id }}">
+                                     <!-- Action button for quantity increase -->
                                     <div class="input-group-append">
                                         <button class="increment-qty btn btn-black rounded-0 increment-qty_{{ book.id }}"
                                             data-item_id="{{ book.id }}" id="increment-qty_{{ book.id }}">
@@ -69,13 +78,16 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Action buttons -->
                         <div class="col{% if s %}-12 mt-2{% endif %}">
+                            <!-- Navigating back to books -->
                             <a href="{% url 'books' %}" class="btn btn-dark mt-3">
                                 <span class="icon">
                                     <i class="fas fa-chevron-left"></i>
                                 </span>
                                 <span class="text-uppercase">Keep Shopping</span>
                             </a>
+                            <!-- Put the selected number of the current book in the shopping bag -->
                             <input type="submit" class="btn btn-dark text-uppercase mt-3" value="Add to Bag">
                         </div>
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -85,5 +97,6 @@
         </section>
     </article>
 </div>
+<!-- Javascript code to handle increase/decrease of quantity of current book to put in bag -->
 <script type="text/javascript" src="{% static 'js/book_quantity.js' %}"></script>
 {% endblock %}

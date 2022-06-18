@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404
 from books.models import Book
 
 
+# Context to store and pass actual bag content for checkout
 def my_bag_contents(request):
 
     bag_items = []
@@ -11,6 +12,7 @@ def my_bag_contents(request):
     product_count = 0
     bag = request.session.get('bag', {})
 
+    # Get bag items (books)
     for item_id, quantity in bag.items():
         book = get_object_or_404(Book, pk=item_id)
         total += quantity * book.price
@@ -21,6 +23,7 @@ def my_bag_contents(request):
             'book': book,
         })
 
+    # Calculate total with delivery fee
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
         free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
@@ -30,6 +33,7 @@ def my_bag_contents(request):
 
     grand_total = delivery + total
 
+    # Pass bag items
     context = {
         'bag_items': bag_items,
         'total': total,

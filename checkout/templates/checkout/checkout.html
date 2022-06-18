@@ -5,16 +5,20 @@
 <div class="overlay"></div>
 <div class="container main-container">
     <article class="row">
+        <!-- Page Title -->
         <header class="row">
             <div class="col">
                 <hr>
-                <h2 class="logo-font mb-4 mt-4">Checkout</h2>
+                <h1 class="logo-font mb-4 mt-4">Checkout</h1>
                 <hr>
             </div>
         </header>
+        <!-- Checkout elements : Order Summary and Order Form -->
         <section class="row">
+            <!-- Order Summary -->
             <div class="col-12 col-lg-6 order-lg-last mb-5">
-                <p class="text-dark">Order Summary ({{ product_count }})</p>
+                <h5 class="text-dark">Order Summary ({{ product_count }})</h5>
+                <!-- Order Items with details and subtotals -->
                 <div class="row">
                     <div class="col-7">
                         <p class="mb-1 mt-0 small text-muted">Item</p>
@@ -38,6 +42,7 @@
                         </div>
                     </div>
                 {% endfor %}
+                <!-- Order Total and Grand Total with Delivery -->
                 <hr class="my-0">
                 <div class="row text-black text-right">
                     <div class="col-7">
@@ -52,15 +57,18 @@
                     </div>
                 </div>
             </div>
+            <!-- Order Form (Using OrderForm from checkout/forms.py) -->
             <div class="col-12 col-lg-6">
-                <p class="text-dark">Please fill out the form below to complete your order</p>
+                <h5 class="text-dark">Please fill out the form below to complete your order</h5>
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
+                    <!-- Order Form : User details -->
                     <fieldset class="rounded mb-5">
                         <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
                         {{ order_form.full_name | as_crispy_field }}
                         {{ order_form.email | as_crispy_field }}
                     </fieldset>
+                    <!-- Order Form : Delivery information -->
                     <fieldset class="rounded mb-5">
                         <legend class="fieldset-label small text-black px-2 w-auto">Delivery</legend>
                         {{ order_form.phone | as_crispy_field }}
@@ -71,10 +79,13 @@
                         {{ order_form.postcode | as_crispy_field }}
                         {{ order_form.country | as_crispy_field }}
                         <div class="form-check form-check-inline float-right mr-0">
+                            <!-- Order Form Actions -->
                             {% if user.is_authenticated %}
+                                <!-- If user logged in : Save delivery information to profile -->
                                 <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
                                 <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
                             {% else %}
+                                <!-- If user logged out : Require login/signup for proceeding -->
                                 <label class="form-check-label" for="id-save-info">
                                     <a class="text-info" href="{% url 'signup' %}">Create an account</a> or
                                     <a class="text-info" href="{% url 'login' %}">login</a> to save this information
@@ -82,22 +93,27 @@
                             {% endif %}
                         </div>
                     </fieldset>
+                    <!-- Order Form : Proceeding with payment -->
                     <fieldset>
                         <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
-                        <!-- A Stripe card element will go here -->
+                        <!-- Placeholder for Stripe card element -->
                         <div class="mb-3" id="card-element"></div>
-                        <!-- Used to display form errors -->
+                        <!-- Placeholder for form errors -->
                         <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-                        <!-- Pass the client secret to the view so we can get the payment intent id -->
+                        <!-- Placeholder for client secret to pass it to the view to get payment intent id -->
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
+                    <!-- Pre-Order information / action -->
                     <div class="submit-button text-right mt-2">
+                        <!-- Reminder to grand total -->
                         <p class="text-danger my-0 mb-3">
                             <strong>Your card will be charged ${{ grand_total|floatformat:2 }}</strong>
                         </p>
+                        <!-- Go back to bag to adjust content -->
                         <a href="{% url 'view_my_bag' %}" class="btn btn-lg btn-dark">
                             Adjust Bag
                         </a>
+                        <!-- Send order for registration -->
                         <button id="submit-button" class="btn btn-lg btn-dark">
                             Complete Order
                         </button>
@@ -116,6 +132,7 @@
 </div>
 {% endblock %}
 
+<!-- Order Form : Passing stripe keys to Javascript from Django view -->
 {% block postloadjs %}
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ client_secret|json_script:"id_client_secret" }}

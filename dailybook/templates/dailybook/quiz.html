@@ -3,6 +3,7 @@
 {% load static %}
 <div class="overlay"></div>
 <div class="container main-container">
+    {% if request.user.is_authenticated %}
     <article class="row">
         <!-- Page Title -->
         <header class="row page-title mt-4 mb-3">
@@ -85,5 +86,20 @@
             </div>
         </section>
     </article>
+    {% else %}
+    <article class="row">
+        <header class="row page-title mt-4 mb-4">
+            <h1 class="white-shadow text-center mt-4">
+                Login or sign up to play quiz!
+            </h1>
+            <div class="row mt-4">
+                <div class="center-container">
+                    <a href="{% url 'login' %}" class="btn btn-dark btn-lg">Login</a>
+                    <a href="{% url 'signup' %}" class="btn btn-dark btn-lg ms-1">Sign Up</a>
+                </div>
+            </div>
+        </header>
+    </article>
+    {% endif %}
 </div>
 {% endblock content %}

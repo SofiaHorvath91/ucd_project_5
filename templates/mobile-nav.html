@@ -43,6 +43,7 @@
     </div>
 </li>
 <!-- Shopping Bag and current bag total -->
+{% if request.user.is_authenticated %}
 <li class="list-inline-item">
     <a class="{% if grand_total %}text-primary font-weight-bold{% else %}text-black{% endif %} nav-link d-block d-lg-none"
        href="{% url 'view_my_bag' %}">
@@ -58,6 +59,7 @@
         </div>
     </a>
 </li>
+{% endif %}
 <!-- Feedback -->
 <li class="list-inline-item dropdown">
     <a class="text-black nav-link d-block d-lg-none" href="#" id="feedback-options" data-toggle="dropdown"

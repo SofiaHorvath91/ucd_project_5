@@ -1,8 +1,7 @@
 import random
 
-from django.shortcuts import render
-from django.contrib import messages
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
 
 from .models import Quiz, Question, Answer, Result
 from books.models import Book, Category
@@ -152,6 +151,7 @@ def quiz(request):
 # => Page Aim :
 # Display result of current completion of Daily Mood quiz
 # => Presents daily recommended book in the daily category
+@login_required
 def result(request, result_id):
     context = {}
 

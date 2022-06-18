@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
@@ -36,6 +37,7 @@ def cache_checkout_data(request):
 # Checkout Page (checkout.html)
 # => Page Aim :
 # Page to handle order completion / payment checkout
+@login_required
 def checking_out(request):
     # Get Stripe keys from settings
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
@@ -144,6 +146,7 @@ def checking_out(request):
 # Checkout Success Page (checkout_success.html)
 # => Page Aim :
 # Page to confirm successful order completion / payment checkout
+@login_required
 def checkout_success(request, order_number):
     # Handling successful checkout
     save_info = request.session.get('save_info')

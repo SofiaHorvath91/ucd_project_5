@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import (
     render, redirect, reverse, HttpResponse, get_object_or_404
 )
@@ -9,11 +10,13 @@ from books.models import Book
 # Shopping Bag Page (my_bag.html)
 # => Page Aim :
 # Display current shopping bag with bag items
+@login_required
 def view_my_bag(request):
     return render(request, 'shopping_bag/my_bag.html')
 
 
 # Add items to shopping bag (or update if existing)
+@login_required
 def add_to_my_bag(request, item_id):
     book = get_object_or_404(Book, pk=item_id)
     quantity = int(request.POST.get('quantity'))
@@ -34,6 +37,7 @@ def add_to_my_bag(request, item_id):
 
 
 # Update items in shopping bag (or remove if qty < 1)
+@login_required
 def adjust_my_bag(request, item_id):
     book = get_object_or_404(Book, pk=item_id)
     quantity = int(request.POST.get('quantity'))

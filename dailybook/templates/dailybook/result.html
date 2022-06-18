@@ -3,6 +3,7 @@
 {% load static %}
 <div class="overlay"></div>
 <div class="container main-container">
+     {% if request.user == result.user or request.user.is_superuser %}
     <article class="row">
         <!-- Page Title -->
         <header class="row page-title mt-4 mb-4">
@@ -91,5 +92,21 @@
             </div>
         </footer>
     </article>
+     {% else %}
+    <article class="row">
+        <header class="row page-title mt-4 mb-4">
+            <h1 class="white-shadow text-center mt-4">
+                Sorry, you are not authorized to see this page!
+            </h1>
+            <div class="row mt-4">
+                <div class="center-container">
+                    <a class="btn btn-lg btn-dark text-center" href="{% url 'home' %}">
+                        Return to Home page
+                    </a>
+                </div>
+            </div>
+        </header>
+    </article>
+    {% endif %}
 </div>
 {% endblock content %}

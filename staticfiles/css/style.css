@@ -416,7 +416,7 @@ select option[value=""] {
     color: #aab7c4;
 }
 
-/* Feedback Page => Source / Inspiration : https://github.com/LunarLogic/starability */
+/* Feedback/Subcribe Pages */
 
 #ratings-div{
     background-color: rgba(255,255,255,0.8);
@@ -427,6 +427,7 @@ select option[value=""] {
     padding: 0.9rem 0.5rem 0 0.5rem;
 }
 
+/* Feedback Page : Star-based feedback => Source / Inspiration : https://github.com/LunarLogic/starability */
 .starability-result {
   position: relative;
   width: 170px;
@@ -701,7 +702,6 @@ select option[value=""] {
         left: 0;
         z-index: 1030;
     }
-
 }
 
 @media only screen and (max-width: 991.5px) and (min-width: 501px) {

@@ -54,7 +54,7 @@
         </section>
         <br>
         <!-- Section to recommend new book which will be added to available books by admin if it is approved -->
-        <section class="row mt-3 mb-3">
+        <section class="row mt-3 mb-4">
             <h3 class="text-center text-dark bold white-shadow mb-3">Recommend A Book</h3>
             <div class="center-container">
                 <form method="POST">
@@ -85,6 +85,18 @@
                                class="btn btn-lg btn-dark"/>
                     </div>
                 </form>
+            </div>
+        </section>
+        <!-- Link toward Subscription page -->
+        <section class="row text-center mb-4">
+            <h3 class="text-dark bold white-shadow mt-1">Like Our Site?</h3>
+            <h5 class="text-dark bold mb-3">Subscribe to our newsletter to get the latest stories!</h5>
+            <div class="row mb-3">
+                <div class="center-container">
+                    <a href="{% url 'subscribe' %}" class="btn btn-lg btn-dark">
+                        Subscribe To Newsletter
+                    </a>
+                </div>
             </div>
         </section>
         <!-- Section to see the list of all feedbacks left so far about site by users -->

@@ -90,7 +90,8 @@ def profile(request):
 
 # Order History Page (checkout_success.html)
 # => Page Aim :
-# Display past order when clicking on order number in order list on profile
+# Display past order
+# when clicking on order number in order list on profile
 @login_required
 def order_history(request, order_number):
     context = {}

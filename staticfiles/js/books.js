@@ -5,8 +5,8 @@
 
 /* Scroll to top of page upon clicking on up arrow at page bottom */
 $('.btt-link').click(function(e) {
-    window.scrollTo(0,0)
-})
+    window.scrollTo(0,0);
+});
 
 /* React on sorting criteria change
 and set new sorting condition by altering URL */
@@ -16,7 +16,7 @@ $('#sort-selector').change(function() {
     var selectedVal = selector.val();
     var newURL = setSearchValues(selectedVal, currentUrl);
     window.location.replace(newURL);
-})
+});
 
 /* Javascript Functions */
 
@@ -28,7 +28,7 @@ function setSearchValues(selectedVal, currentUrl){
         var direction = selectedVal.split("_")[1];
 
         if(direction == 'depository'){
-                dir = selectedVal.split("_")[3];
+                var dir = selectedVal.split("_")[3];
                 currentUrl.searchParams.set("sort", 'book_depository_stars');
                 currentUrl.searchParams.set("direction", dir);
         } else {

@@ -102,7 +102,7 @@ form.addEventListener('submit', function(ev) {
     }).fail(function () {
         // Upon page reload, the error to how via django messages
         location.reload();
-    })
+    });
 });
 
 /* Javascript Functions */

@@ -7,7 +7,7 @@
 let countrySelected = $('#id_basic_country').val();
 if(!countrySelected) {
     $('#id_basic_country').css('color', 'rgb(170, 183, 196)');
-};
+}
 
 /* Handle change of country field */
 $('#id_basic_country').change(function() {

@@ -82,7 +82,7 @@ def book_detail(request, book_id):
         return render(request, 'books/books.html', context)
 
     # Allow System Admin to delete a book
-    if request.POST.get('book-to-delete') and request.user.is_superuser :
+    if request.POST.get('book-to-delete') and request.user.is_superuser:
         book_delete = Book.objects.filter(id=request.POST['book-to-delete']).first()
         book_delete.delete()
         messages.success(request, 'Book was deleted.')

@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /shopping_bag/
+Disallow: /checkout/
+Disallow: /profile/
+Sitemap: https://serene-citadel-08400.herokuapp.com/sitemap.xml

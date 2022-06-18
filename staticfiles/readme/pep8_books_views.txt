@@ -1,0 +1,110 @@
+Check results
+=============
+
+E501:86:80:line too long (84 > 79 characters)
+
+Code
+=============
+from django.db.models import Q
+from django.db.models.functions import Lower
+from django.contrib import messages
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+
+from .models import Book, Category
+
+
+# Books Page (books.html)
+# => Page Aim :
+# Present all books and allow their sorting/searching
+def all_books(request):
+    # Initializing books and sorting/searching variables
+    books = Book.objects.all()
+    query = None
+    categories = None
+    sort = None
+    direction = None
+
+    if request.GET:
+        # Handling the selection of sorting condition via selector
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                books = books.annotate(lower_name=Lower('name'))
+            if sortkey == 'category':
+                sortkey = 'category__name'
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            books = books.order_by(sortkey)
+
+        # Handling sorting by category
+        if 'category' in request.GET:
+            categories = request.GET['category'].split(',')
+            books = books.filter(category__name__in=categories)
+            categories = Category.objects.filter(name__in=categories)
+
+        # Allow users to use global search for books
+        if 'q' in request.GET:
+            query = request.GET['q']
+            queries = global_search(request, query)
+            books = Book.objects.filter(queries)
+            books = books.filter(queries)
+
+    # Setting current sorting criteria
+    current_sorting = f'{sort}_{direction}'
+
+    # Setting context for passing variables to Django template
+    context = {
+        'books': books,
+        'search_term': query,
+        'current_categories': categories,
+        'current_sorting': current_sorting,
+    }
+
+    return render(request, 'books/books.html', context)
+
+
+# Book Detail Page (book_detail.html)
+# => Page Aim :
+# Present a selected book
+def book_detail(request, book_id):
+    # Getting/setting current book's record
+    book = get_object_or_404(Book, pk=book_id)
+    context = {
+        'book': book,
+    }
+
+    # Allow users to use global search for books
+    if 'q' in request.GET:
+        query = request.GET['q']
+        queries = global_search(request, query)
+        books = Book.objects.filter(queries)
+        context = {
+            'books': books,
+            'search_term': query,
+        }
+        return render(request, 'books/books.html', context)
+
+    # Allow System Admin to delete a book
+    if request.POST.get('book-to-delete') and request.user.is_superuser:
+        book_delete = Book.objects.filter(id=request.POST['book-to-delete']).first()
+        book_delete.delete()
+        messages.success(request, 'Book was deleted.')
+        return render(request, 'books/books.html', context=context)
+
+    return render(request, 'books/book_detail.html', context)
+
+
+# Helper methods
+
+# Helper for global search
+def global_search(request, query):
+    if not query:
+        messages.error(request, "You didn't enter any search criteria!")
+        return redirect(reverse('books'))
+
+    queries = Q(name__icontains=query) | Q(author__icontains=query)
+    return queries

@@ -1,6 +1,5 @@
-from django.shortcuts import (
-    render, redirect, reverse, HttpResponse, get_object_or_404
-)
+from django.shortcuts import render
+
 from django.contrib import messages
 
 from .models import Feedback, Recommendation
@@ -73,4 +72,3 @@ def feedback(request):
 # Give ability to users to subscribe to Mailchimp newsletter
 def subscribe(request):
     return render(request, 'feedback/subscribe.html')
-

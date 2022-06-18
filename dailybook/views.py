@@ -114,12 +114,14 @@ def quiz(request):
                          "To help you get out of reality and enter a new world of dreams and monsters, " \
                          "we recommend the following book as the exit door to escape the daily routine."
 
-            # Select random book in maximum ctegory as daily book recommendation
+            # Select random book in maximum category
+            # as daily book recommendation
             books_per_category = Book.objects.filter(category=category)
             random_num = random.randint(0, (len(books_per_category) - 1))
             daily_book = books_per_category[random_num]
 
-            # Create result object in database and navigate to current result's record
+            # Create result object in database
+            # and navigate to current result's record
             result = Result.objects.create(quiz=quiz,
                                            category=category,
                                            point=max_point,

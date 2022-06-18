@@ -112,7 +112,3 @@ class QuizQuestionAnswerResultModelsTest(TestCase):
         self.assertEqual(result_user_count, 1)
         self.assertEqual(quiz.results.first().user.username, "tester")
         self.assertEqual(quiz.results.first().user.email, "test@test.com")
-
-
-
-

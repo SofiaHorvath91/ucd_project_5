@@ -2,13 +2,15 @@ from django.contrib import admin
 from .models import Order, OrderLineItem
 
 
-# Setting Admin view of OrderLineItem model's records in Django admin platform (under related Order)
+# Setting Admin view of OrderLineItem model's records
+# in Django admin platform (under related Order)
 class OrderLineItemAdminInline(admin.TabularInline):
     model = OrderLineItem
     readonly_fields = ('lineitem_total',)
 
 
-# Setting Admin view of Order model's records in Django admin platform
+# Setting Admin view of Order model's records
+# in Django admin platform
 class OrderAdmin(admin.ModelAdmin):
     inlines = (OrderLineItemAdminInline,)
 
@@ -31,5 +33,6 @@ class OrderAdmin(admin.ModelAdmin):
     ordering = ('-date',)
 
 
-# Registering Order model (with related OrderLineItems) on Django admin platform
+# Registering Order model (with related OrderLineItems)
+# on Django admin platform
 admin.site.register(Order, OrderAdmin)

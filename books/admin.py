@@ -2,7 +2,8 @@ from django.contrib import admin
 from .models import Book, Category
 
 
-# Setting Admin view of Book model's records in Django admin platform
+# Setting Admin view of Book model's records
+# in Django admin platform
 class BookAdmin(admin.ModelAdmin):
     list_display = (
         'name',
@@ -17,7 +18,8 @@ class BookAdmin(admin.ModelAdmin):
     ordering = ('category',)
 
 
-# Setting Admin view of Category model's records in Django admin platform
+# Setting Admin view of Category model's records
+# in Django admin platform
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',
@@ -25,7 +27,7 @@ class CategoryAdmin(admin.ModelAdmin):
     )
 
 
-# Registering Book and Category models on Django admin platform
+# Registering Book and Category models
+# on Django admin platform
 admin.site.register(Book, BookAdmin)
 admin.site.register(Category, CategoryAdmin)
-

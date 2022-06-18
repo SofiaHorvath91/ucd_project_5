@@ -80,4 +80,3 @@ class OrderModelTest(TestCase):
         self.assertEqual(self.get_field_value(profile.basic_street2), self.set_field_value('Baker Street'))
         self.assertEqual(self.get_field_value(profile.basic_county), self.set_field_value('London'))
         self.assertEqual(self.get_field_value(profile.basic_city), self.set_field_value('London'))
-

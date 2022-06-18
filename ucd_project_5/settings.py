@@ -85,19 +85,19 @@ WSGI_APPLICATION = 'ucd_project_5.wsgi.application'
 # Database
 
 # Database sqlite3 for development / testing
-# DATABASES = {
-#      'default': {
-#          'ENGINE': 'django.db.backends.sqlite3',
-#          'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#      }
-# }
+DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+     }
+}
 
 # Database postgresql for production
-DATABASES = {
-      'default': {
-          'ENGINE': 'django.db.postgresql_psycopg2',
-      }
-}
+# DATABASES = {
+#       'default': {
+#           'ENGINE': 'django.db.postgresql_psycopg2',
+#       }
+# }
 
 db_from_env = dj_database_url.config(conn_max_age=500, ssl_require=True)
 DATABASES['default'].update(db_from_env)

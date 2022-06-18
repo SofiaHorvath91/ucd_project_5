@@ -1,4 +1,4 @@
-/* Constant to pass jQuery for testing with Jest (book_quantity.test.js), to be commented out in Production */
+/* Constant to pass jQuery for testing with Jest (books.test.js), to be commented out in Production */
 //const $ = require('jquery');
 
 /* jQuery */
@@ -46,4 +46,4 @@ function setSearchValues(selectedVal, currentUrl){
 }
 
 /* Export modules for testing with Jest (books.test.js), to be commented out in Production */
-//module.exports = { setSearchValues };
+//module.exports = { $, setSearchValues };

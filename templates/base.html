@@ -36,6 +36,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap" rel="stylesheet">
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7_dtp.css" rel="stylesheet" type="text/css">
     <!-- Custom Style Sheet  -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
@@ -104,15 +105,18 @@
                         </a>
                     </li>
                     <!-- Feedback -->
-                    <li class="list-inline-item">
-                        <a class="text-black nav-link"
-                           href="{% url 'feedback' %}">
+                    <li class="list-inline-item dropdown">
+                        <a class="text-black nav-link" href="#" id="feedback-options" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
                             <div class="text-center">
                                 <div><i class="fas fa-pen fa-lg"></i></div>
-                                <p class="my-0">Feedback
-                                </p>
+                                <p class="my-0">Contact</p>
                             </div>
                         </a>
+                        <div class="dropdown-menu border-0" aria-labelledby="feedback-options">
+                            <a href="{% url 'feedback' %}" class="dropdown-item">Feedback</a>
+                            <a href="{% url 'subscribe' %}" class="dropdown-item">Subscribe</a>
+                        </div>
                     </li>
                 </ul>
             </div>

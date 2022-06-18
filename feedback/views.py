@@ -66,3 +66,11 @@ def feedback(request):
         return render(request, 'feedback/feedback.html', context=context)
 
     return render(request, 'feedback/feedback.html', context=context)
+
+
+# Subscribe Page (subscribe.html)
+# => Page Aim :
+# Give ability to users to subscribe to Mailchimp newsletter
+def subscribe(request):
+    return render(request, 'feedback/subscribe.html')
+

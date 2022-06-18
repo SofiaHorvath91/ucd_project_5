@@ -14,7 +14,13 @@
         <!-- Quiz Starter Container -->
             {% if game_start is True %}
             <div id="quiz-starter">
-                <h4 class="text-center text-uppercase bold">{{quiz.description|linebreaks}}</b></h4>
+                <div class="row mb-4">
+                    <div class="center-container">
+                         <img class="site-icon"
+                              src="{% static '' %}img/books.png" alt="Find Your Book">
+                    </div>
+                </div>
+                <h2 class="text-center text-uppercase bold white-shadow">{{quiz.description|linebreaks}}</h2>
                 <div class="row mt-4 mb-4">
                     <div class="center-container">
                         <form method="POST">

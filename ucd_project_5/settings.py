@@ -11,7 +11,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')  # Configure path toward sta
 
 SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["serene-citadel-08400.herokuapp.com", "localhost"]
 

@@ -19,10 +19,11 @@ def home(request):
     context = {}
     all_books = Book.objects.all()
 
-    #
-    random_num = random.randint(0, (len(all_books) - 1))
-    random_book = all_books[random_num]
-    context['book'] = random_book
+    # Get random book for recommendation
+    if len(all_books) > 0:
+        random_num = random.randint(0, (len(all_books) - 1))
+        random_book = all_books[random_num]
+        context['book'] = random_book
 
     # Allow users to use global search for books
     if 'q' in request.GET:

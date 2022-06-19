@@ -1,4 +1,4 @@
-# Mind The Reader(UCD Project 5)
+# Mind The Reader (UCD Project 5)
 Little bookshop of magic for readers and dreamers
 
 If you seek to find an escape from reality, if you are looking for a new world of imagination, if you want to get lost in a new adventure, visit our little bookshop of dreams! Here special books are waiting for their special reader, and each new day is a new story!

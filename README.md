@@ -632,7 +632,7 @@ $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 Pictures were treated with [Photoshop](http://www.apsportable.com/photoshop-cs6-portable-download-4/) and [tinyPNG](https://tinypng.com/) to have a better size for online presentation.
 * Site Logo was made by me, based on [this book icon](https://hu.pinterest.com/pin/6333255716465386/) and [this head icon](https://www.iconspng.com/image/61000/man-head-silhouette)
 * Background image : [WallpaperFlare](https://www.wallpaperflare.com/books-question-mark-student-stack-book-stack-library-learn-wallpaper-arjxa)
-* Category Icons : [Crime-Thriller (IconsPNG)](https://www.iconspng.com/image/122355/hand-with-knife) / [Comics-Manga (PNGFind](https://www.pngfind.com/mpng/ixmhxib_45392-sticker-deco-auto-boom-explosion-in-graphic/) / [Poetry-Drama (Icon-Library)](https://icon-library.com/icon/drama-icon-16.html) / [SciFi-Fantasy-Horror (KissClipArt)](https://www.kissclipart.com/dragon-head-clipart-chinese-dragon-clip-art-l33i9t/)
+* Category Icons : [Crime-Thriller (IconsPNG)](https://www.iconspng.com/image/122355/hand-with-knife) / [Comics-Manga (PNGFind)](https://www.pngfind.com/mpng/ixmhxib_45392-sticker-deco-auto-boom-explosion-in-graphic/) / [Poetry-Drama (Icon-Library)](https://icon-library.com/icon/drama-icon-16.html) / [SciFi-Fantasy-Horror (KissClipArt)](https://www.kissclipart.com/dragon-head-clipart-chinese-dragon-clip-art-l33i9t/)
 ### 3. External Codes used as source / inspiration
 * Boutique Ado Project, provided by UCD as sample project : [Find on GitHub](https://github.com/Code-Institute-Solutions/boutique_ado_v1)
 * Responsive Navbar (Navigation Bar) : [Bootstrap](https://getbootstrap.com/docs/4.4/components/navbar/) (also used for general styling like margins, rows)

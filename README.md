@@ -580,7 +580,8 @@ Passing the python models of all applications through Django unit tests and all 
   * [PEP8 Validations](https://github.com/SofiaHorvath91/ucd_project_5/blob/master/static/readme/python_test/pep8/)
   * [Django Unit Tests](https://github.com/SofiaHorvath91/ucd_project_5/blob/master/static/readme/python_test/unittest/)
 * Stripe API\
-Checkout and payment operations could be tested via Stripe API's Developer Console where after registering deployed site, incoming webhooks and events are registered. As per the example here below, upon placing order, successful payment intent event is created.
+Checkout and payment operations could be tested via Stripe API's Developer Console where after registering deployed site, incoming webhooks and events are registered. As per the example here below, upon placing order, successful payment intent event is created.\
+To test purchase function on site, please use test card information : Numer 4242 4242 4242 4242 / Expiration 4/24 / CVC 242 / Visa 42424.
   * [Order paid with Stripe via website](https://github.com/SofiaHorvath91/ucd_project_5/blob/master/static/readme/stripe_order.PNG)
   * [Stripe event and webhook upon order payment](https://github.com/SofiaHorvath91/ucd_project_5/blob/master/static/readme/stripe_event.pdf)
 ### 5. Manual tests

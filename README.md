@@ -43,104 +43,103 @@ The project was developed in 5 sprints with 5 milestone dates. During the develo
 The aim was to finalize each iteration for the determined milestone, which means the completion of the tasks related to the user stories which are associated to the given iteration until the deadline. The iterations include user stories belonging to more epics, but each iteration has a higher focus on a given epic, mirroring the development of the work. During the finalisation of the user stories belonging to an iteration, the high-priority user stories got more focus and higher level of attention.
 ### 3. Agile Tools
 During the development, regarding tight time-frame, the classic method was used with table and post-its, however for better presentation, the development process was translated to Github tools.
-* [Github Project = Work Project (1)](https://github.com/SofiaHorvath91/ucd_project_5/projects/1)
-  * A project 'UCD Project 4 : MyAppocalypse' was created to contain the agile development work done to build up the application, containing milestones and prioritized user stories belonging to different epics. The project grouped the user stories based on three statuses in a Kanban view : To do / In progress / Done, based on the level of completion.
+* [Github Project = Work Projects (5)](https://github.com/SofiaHorvath91/ucd_project_5/projects?type=classic)
+  * To represent the status of the project at the end of each iteration, so at each milestone, 5 projects were created to illustrate the status of 40 same taks upon iteration milestone.
 * [Github Milestones = Iterations / Sprints (5)](https://github.com/SofiaHorvath91/ucd_project_5/milestones)
   * Milestones were used to represent a work sprint with precised deadline which is served to keep in line the project development in order to respect the final deadline. During each iteration of the work, a different epic was prioritised, allowing the timely build of the full site and the continous testing from the beginning.
   * The 5 iterations : Iteration 0 / Iteration 1 / Iteration 2 / Iteration 3 / Iteration 4
-* [Github Issues = User stories (28)](https://github.com/SofiaHorvath91/ucd_project_5/issues?q=)
-  * Issues were used to represent user stories, all created using an issue template ('User Story'). A user story contains the description of the story ('as a ... I can ... so that ...'), the related epic(s), the corresponding user story points, the related tasks and the user acceptance criteria(s). Each story belongs to a milestone sprint (iteration), and each story is labeled based on related epic(s), and high-priority stories are further labeled as priorities. All stories are assigned to admin / site owner.
-  * Github Issue template was used to provide a coherent view and content for the user stories, created as Issues.
-* [Github Labels = Epics (5) +  High-Priority user stories (13)](https://github.com/SofiaHorvath91/ucd_project_5/labels)
+* [Github Issues = User stories (40)](https://github.com/SofiaHorvath91/ucd_project_5/issues?q=)
+  * Issues were used to represent user stories. A user story contains the description of the story ('as a ... I can ... so that ...'), the related epic(s), the corresponding user story points, the related tasks and the user acceptance criteria(s). Each story belongs to a milestone sprint (iteration), and each story is labeled based on related epic(s), and high-priority stories are further labeled as priorities. All stories are assigned to admin / site owner.
+* [Github Labels = Epics (5) +  High-Priority user stories (14)](https://github.com/SofiaHorvath91/ucd_project_5/labels)
   * Labels were used to connect user stories to one or more of the 5 epics, which are groups of stories targeting the same aspect of development. Each epic is represented by a label colored differently to be able to better distinct them, and the 5 epic together include all kind of works which should be done to build the application.
   * The 5 epics : Admin-specific Action / Feedback / Main Functionality / Site Structure / User Authentication
   * Labels were also used to create a Priority label to be able to tag high-priority user stories which require more attention and work, as they concern the core functionnalities of the site. 
 ### 4. Agile Method Details
 Please find below the 5 iterations and the user stories with respective story points which was expected to be finalized until the milestone of the given iteration, all stories grouped by epics. By clicking on the name of the iterations, you may consult the screenshot of the project dashboard at the end of each iteration, so at each milestone. By clicking on the user stories, you may consult the related Github Issue with all the details about the given story. By clicking on the link of qet to-do user stories, you may consult their list.
 
-[Iteration 0 : Finding basic site idea and make decision about site theme. => Milestone : 01/05/2022 (1 Story)](https://github.com/SofiaHorvath91/ucd_project_5/blob/master/static/readme/Iteration0_End_01052022.png)
+[Iteration 0 : Finding basic site idea and make decision about site theme. => Milestone : 01/05/2022 (1 Story)](https://github.com/SofiaHorvath91/ucd_project_5/projects/1)
 
 * Epic 'Admin-specific Action'
-  * [User Story : Project idea and site draft for site owner (admin)]() (SP 48) => Priority
+  * [User Story : Project idea and site draft for site owner (admin)](https://github.com/SofiaHorvath91/ucd_project_5/issues/1) (SP 48) => Priority
 
-[Iteration 1 : Building basic technical skeleton of the site (Python Django app with standard/social authentication, deployed to Heroku). => Milestone : 15/05/2022 (9 Stories)](https://github.com/SofiaHorvath91/ucd_project_5/blob/master/static/readme/Iteration1_End_15052022.png)
+[Iteration 1 : Building basic technical skeleton of the site (Python Django app with standard/social authentication, deployed to Heroku). => Milestone : 15/05/2022 (9 Stories)](https://github.com/SofiaHorvath91/ucd_project_5/projects/2)
 
 * Epic 'User Authentication'
-  * [User Story : Setup of application's technical skeletion for site owner]() (SP 50) => Priority
-  * [User Story : Features' availability for authenticated users]() (SP 40)
-  * [User Story : Login for not-authenticated user with existing account]() (SP 50) => Priority
-  * [User Story : Sign up for not-authenticated user without existing account]() (SP 50) => Priority
-  * [User Story : Switching between connected accounts (created via standard / social way)]() (SP 45)
-  * [User Story : Logout for authenticated users]() (SP 49)
+  * [User Story : Setup of application's technical skeletion for site owner](https://github.com/SofiaHorvath91/ucd_project_5/issues/6) (SP 50) => Priority
+  * [User Story : Features' availability for authenticated users](https://github.com/SofiaHorvath91/ucd_project_5/issues/7) (SP 40)
+  * [User Story : Login for not-authenticated user with existing account](https://github.com/SofiaHorvath91/ucd_project_5/issues/2) (SP 50) => Priority
+  * [User Story : Sign up for not-authenticated user without existing account](https://github.com/SofiaHorvath91/ucd_project_5/issues/3) (SP 50) => Priority
+  * [User Story : Switching between connected accounts (created via standard / social way)](https://github.com/SofiaHorvath91/ucd_project_5/issues/5) (SP 45)
+  * [User Story : Logout for authenticated users](https://github.com/SofiaHorvath91/ucd_project_5/issues/4) (SP 49)
 * Epic 'Site Structure'
-  * [User Story : Basic links' availability for not-authenticated users]() (SP 40)
-  * [User Story : Features' availability for authenticated users]() (SP 40)
-  * [User Story : Starting page information]() (SP 40)
-  * [User Story : Understanding site's goal as a general (particularly a not-authenticated) user]() (SP 38)
+  * [User Story : Basic links' availability for not-authenticated users](https://github.com/SofiaHorvath91/ucd_project_5/issues/10) (SP 40)
+  * [User Story : Features' availability for authenticated users](https://github.com/SofiaHorvath91/ucd_project_5/issues/7) (SP 40)
+  * [User Story : Starting page information](https://github.com/SofiaHorvath91/ucd_project_5/issues/8) (SP 40)
+  * [User Story : Understanding site's goal as a general (particularly a not-authenticated) user](https://github.com/SofiaHorvath91/ucd_project_5/issues/9) (SP 38)
 
-[Iteration 2 : Setting up main functionality : E-commerce platform with checkout / payment functions for allowing users to buy products. => Milestone : 29/05/2022 (23 Stories)](https://github.com/SofiaHorvath91/ucd_project_5/blob/master/static/readme/Iteration2_End_29052022.png)
+[Iteration 2 : Setting up main functionality : E-commerce platform with checkout / payment functions for allowing users to buy products. => Milestone : 29/05/2022 (23 Stories)](https://github.com/SofiaHorvath91/ucd_project_5/projects/3)
 
 * Epic 'Main Functionality'
-  * [User Story : Find and load books with categories which answers to the expected criterias for authenticated admin users]() (SP 45)
-  * [User Story : Creation of Django models which can capture / store the needed data the best possible way for authenticated admin users]() (SP 50) => Priority
-  * [User Story : Pages for all books and books by category with search / sorting options for all users]() (SP 48)
-  * [User Story : Shopping bag for authenticated users to allow them to place books in it]() (SP 50) => Priority
-  * [User Story : Detail page for books with option to add selected quantity of book to shopping bag for authenticated users]() (SP 48) => Priority
-  * [User Story : Ability to modify quantity of a book / delete book once placed in shopping bag for authenticated users]() (SP 38) => Priority
-  * [User Story : Checkout function to allow payment and purchase with Stripe for authenticated users]() (SP 50) => Priority
-  * [User Story : Notification about successful purchase and confirmation about placed order's details for authenticated users]() (SP 45)
-  * [User Story : Profile page to capture used delivery address, and to show all orders + other contributions on one place for authtenticated users]() (SP 42) => Priority
-  * [User Story : Quiz to give user a recommended book based in the category which fits best the daily mood for authenticated users]() (SP 30)
-  * [User Story : Authentication- / Owner-based page/record access for authenticated/not-authenticated/admin users]() (SP 48) => Priority
-  * [User Story : Site feedbacks (messages) about effected actions for authenticated/not-authenticated/admin users]() (SP 42)
+  * [User Story : Find and load books with categories which answers to the expected criterias for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_5/issues/11) (SP 45)
+  * [User Story : Creation of Django models which can capture / store the needed data the best possible way for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_5/issues/12) (SP 50) => Priority
+  * [User Story : Pages for all books and books by category with search / sorting options for all users](https://github.com/SofiaHorvath91/ucd_project_5/issues/13) (SP 48)
+  * [User Story : Shopping bag for authenticated users to allow them to place books in it](https://github.com/SofiaHorvath91/ucd_project_5/issues/14) (SP 50) => Priority
+  * [User Story : Detail page for books with option to add selected quantity of book to shopping bag for authenticated users](https://github.com/SofiaHorvath91/ucd_project_5/issues/15) (SP 48) => Priority
+  * [User Story : Ability to modify quantity of a book / delete book once placed in shopping bag for authenticated users](https://github.com/SofiaHorvath91/ucd_project_5/issues/16) (SP 38) => Priority
+  * [User Story : Checkout function to allow payment and purchase with Stripe for authenticated users](https://github.com/SofiaHorvath91/ucd_project_5/issues/17) (SP 50) => Priority
+  * [User Story : Notification about successful purchase and confirmation about placed order's details for authenticated users](https://github.com/SofiaHorvath91/ucd_project_5/issues/18) (SP 45)
+  * [User Story : Profile page to capture used delivery address, and to show all orders + other contributions on one place for authtenticated users](https://github.com/SofiaHorvath91/ucd_project_5/issues/19) (SP 42) => Priority
+  * [User Story : Quiz to give user a recommended book based in the category which fits best the daily mood for authenticated users](https://github.com/SofiaHorvath91/ucd_project_5/issues/20) (SP 30)
+  * [User Story : Authentication- / Owner-based page/record access for authenticated/not-authenticated/admin users](https://github.com/SofiaHorvath91/ucd_project_5/issues/21) (SP 48) => Priority
+  * [User Story : Site feedbacks (messages) about effected actions for authenticated/not-authenticated/admin users](https://github.com/SofiaHorvath91/ucd_project_5/issues/22) (SP 42)
 * Epic 'User Authentication'
-  * [User Story : Authentication- / Owner-based record access for authenticated/not-authenticated/admin users]() (SP 48) => Priority
+  * [User Story : Authentication- / Owner-based record access for authenticated/not-authenticated/admin users](https://github.com/SofiaHorvath91/ucd_project_5/issues/21) (SP 48) => Priority
 * Epic 'Feedback'
-  * [User Story : Feedback page to provide autenticated users the ability to share thoughts and recommend books]() (SP 40)
-  * [User Story : Subscription page to provide authenticated users the ability to sign up for site newsletter]() (SP 42) => Priority
-  * [User Story : Feedback management for authenticated admin users on Feedback page]() (SP 40)
-  * [User Story : Accessible link toward Facebook Page of business for all users]() (SP 35)
-  * [User Story : Ability to share site on social media for all users]() (SP 32)
-  * [User Story : Inclusion of SEO keywords/description and required files (sitemap/robots) for authenticated admin users]() (SP 45) => Priority
-  * [User Story : Creation of Facebook page mockup for marketing purposes for authenticated admin users]() (SP 42)
+  * [User Story : Feedback page to provide autenticated users the ability to share thoughts and recommend books](https://github.com/SofiaHorvath91/ucd_project_5/issues/23) (SP 40)
+  * [User Story : Subscription page to provide authenticated users the ability to sign up for site newsletter](https://github.com/SofiaHorvath91/ucd_project_5/issues/24) (SP 42) => Priority
+  * [User Story : Feedback management for authenticated admin users on Feedback page](https://github.com/SofiaHorvath91/ucd_project_5/issues/25) (SP 40)
+  * [User Story : Accessible link toward Facebook Page of business for all users](https://github.com/SofiaHorvath91/ucd_project_5/issues/26) (SP 35)
+  * [User Story : Ability to share site on social media for all users](https://github.com/SofiaHorvath91/ucd_project_5/issues/27) (SP 32)
+  * [User Story : Inclusion of SEO keywords/description and required files (sitemap/robots) for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_5/issues/28) (SP 45) => Priority
+  * [User Story : Creation of Facebook page mockup for marketing purposes for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_5/issues/29) (SP 42)
 * Epic 'Site Structure'
-  * [User Story : Creation of Django models which can capture / store the needed data the best possible way for for authenticated admin users]() (SP 50) => Priority
-  * [User Story : Responsive design to implement for the best UX on any device for all users]() (SP 46) => Priority
-  * [User Story : Profile page to capture used delivery address, and to show all orders + other contributions on one place for authtenticated users]() (SP 42) => Priority
-  * [User Story : Consult past order details from Profile page by opening order detail page from list for authtenticated users]() (SP 40)
-  * [User Story : Delete option of feedbacks / recommendations / quiz results from Profile page for authenticated users]() (SP 40) => Priority
-  * [User Story : Profile page with CRUD quick-actions and recommendation approval/rejection option for authenticated admin users]() (SP 45)
-  * [User Story : Site feedbacks (messages) about effected actions for authenticated/not-authenticated/admin users]() (SP 42)
-  * [User Story : Inclusion of SEO keywords/description and required files (sitemap/robots) for authenticated admin users]() (SP 45) => Priority
+  * [User Story : Creation of Django models which can capture / store the needed data the best possible way for for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_5/issues/12) (SP 50) => Priority
+  * [User Story : Responsive design to implement for the best UX on any device for all users](https://github.com/SofiaHorvath91/ucd_project_5/issues/30) (SP 46) => Priority
+  * [User Story : Profile page to capture used delivery address, and to show all orders + other contributions on one place for authtenticated users](https://github.com/SofiaHorvath91/ucd_project_5/issues/19) (SP 42) => Priority
+  * [User Story : Consult past order details from Profile page by opening order detail page from list for authtenticated users](https://github.com/SofiaHorvath91/ucd_project_5/issues/31) (SP 40)
+  * [User Story : Delete option of feedbacks / recommendations / quiz results from Profile page for authenticated users](https://github.com/SofiaHorvath91/ucd_project_5/issues/32) (SP 40) => Priority
+  * [User Story : Profile page with CRUD quick-actions and recommendation approval/rejection option for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_5/issues/33) (SP 45)
+  * [User Story : Site feedbacks (messages) about effected actions for authenticated/not-authenticated/admin users](https://github.com/SofiaHorvath91/ucd_project_5/issues/22) (SP 42)
+  * [User Story : Inclusion of SEO keywords/description and required files (sitemap/robots) for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_5/issues/28) (SP 45) => Priority
 * Epic 'Admin-specific Action'
-  * [User Story : Find and load books with categories which answers to the expected criterias for authenticated admin users]() (SP 45)
-  * [User Story : Creation of Django models which can capture / store the needed data the best possible way for for authenticated admin users]() (SP 50) => Priority
-  * [User Story : Responsive design to implement for the best UX on any device for all users]() (SP 46) => Priority
-  * [User Story : Profile page with CRUD quick-actions and recommendation approval/rejection option for authenticated admin users]() (SP 45)
-  * [User Story : Feedback management for authenticated admin users on Feedback page]() (SP 40)
-  * [User Story : Inclusion of SEO keywords/description and required files (sitemap/robots) for authenticated admin users]() (SP 45) => Priority
-  * [User Story : Creation of Facebook page mockup for marketing purposes for authenticated admin users]() (SP 42)
+  * [User Story : Find and load books with categories which answers to the expected criterias for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_5/issues/11) (SP 45)
+  * [User Story : Creation of Django models which can capture / store the needed data the best possible way for for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_5/issues/12) (SP 50) => Priority
+  * [User Story : Responsive design to implement for the best UX on any device for all users](https://github.com/SofiaHorvath91/ucd_project_5/issues/30) (SP 46) => Priority
+  * [User Story : Profile page with CRUD quick-actions and recommendation approval/rejection option for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_5/issues/33) (SP 45)
+  * [User Story : Feedback management for authenticated admin users on Feedback page](https://github.com/SofiaHorvath91/ucd_project_5/issues/25) (SP 40)
+  * [User Story : Inclusion of SEO keywords/description and required files (sitemap/robots) for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_5/issues/28) (SP 45) => Priority
+  * [User Story : Creation of Facebook page mockup for marketing purposes for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_5/issues/29) (SP 42)
 
-[Iteration 3 : Start automatised/manual testing and finalizing main functionality upon test results for best UX. => Milestone : 12/06/2022 (1 Story)](https://github.com/SofiaHorvath91/ucd_project_5/blob/master/static/readme/Iteration3_End_12062022.png)
+[Iteration 3 : Start automatised/manual testing and finalizing main functionality upon test results for best UX. => Milestone : 12/06/2022 (1 Story)](https://github.com/SofiaHorvath91/ucd_project_5/projects/4)
 
 * Epic 'Admin-specific Action'
-  * [User Story : Testing of site functionality and design for authenticated admin]() (SP 40) => Priority
+  * [User Story : Testing of site functionality and design for authenticated admin](https://github.com/SofiaHorvath91/ucd_project_5/issues/34) (SP 40) => Priority
 
-[Iteration 4 : Finishing testing and finalization of project for final deploy to Production. => Milestone : 09/06/2022 (6 Stories)](https://github.com/SofiaHorvath91/ucd_project_5/blob/master/static/readme/Iteration4_End_19062022.png)
+[Iteration 4 : Finishing testing and finalization of project for final deploy to Production. => Milestone : 09/06/2022 (6 Stories)](https://github.com/SofiaHorvath91/ucd_project_5/projects/5)
 
 * Epics 'Admin-specific Action' and 'Main Functionality'
-  * [User Story : After/during testing, correction of site's styling/functional errors for final deployment to Production]() (SP 50) => Priority
+  * [User Story : After/during testing, correction of site's styling/functional errors for final deployment to Production](https://github.com/SofiaHorvath91/ucd_project_5/issues/35) (SP 50) => Priority
 
 [User stories left to implement after last Iteration 4](https://github.com/SofiaHorvath91/ucd_project_5/issues?q=is%3Aopen+is%3Aissue)
 
 * Epic 'Admin-specific Action'
-  * [User Story : Setup of book edit page from UI for authenticated admin users]() (SP 35)
+  * [User Story : Setup of book edit page from UI for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_5/issues/36) (SP 35)
 * Epic 'Main Functionality'
-  * [User Story : Allow users to update delivery address from profile for authenticated users]() (SP 42) => Priority
-  * [User Story : Send email confirmation about placed order for authenticated user]() (SP 45)
+  * [User Story : Allow users to update delivery address from profile for authenticated users](https://github.com/SofiaHorvath91/ucd_project_5/issues/37) (SP 42) => Priority
+  * [User Story : Send email confirmation about placed order for authenticated user](https://github.com/SofiaHorvath91/ucd_project_5/issues/38) (SP 45)
 * Epic 'Site Structure'
-  * [User Story : Allow global search from all pages for authenticated user]() (SP 30)
-  * [User Story : Add book description to Book model for better UX for all users]() (SP 30)
+  * [User Story : Allow global search from all pages for all user](https://github.com/SofiaHorvath91/ucd_project_5/issues/39) (SP 30)
+  * [User Story : Add book description to Book model for better UX for all users](https://github.com/SofiaHorvath91/ucd_project_5/issues/40) (SP 30)
 ### 5. Agile Statistics
 Calculation of the user story points per standard/priority user stories per iterations to see done and remaining work backlog.
 * Iteration 0 : 1 User Story = Total 48 User Story Points (3% of Total User Story Points)
@@ -320,9 +319,9 @@ The following models were created to represent the database model structure for 
   * While not too much content in place, given that it is a shop, existing content was implemented with particular attention to using SEO keywords
   * All keywords related to books / reading / special book categories are used in different page headers
 * Site Map
-  * [Site map]() was created with the help of [XML Sitemaps](https://www.xml-sitemaps.com/) to create a map of site URLS, and then it was included in main directory of the project.
+  * [Site map](https://github.com/SofiaHorvath91/ucd_project_5/blob/master/sitemap.xml) was created with the help of [XML Sitemaps](https://www.xml-sitemaps.com/) to create a map of site URLS, and then it was included in main directory of the project.
   * As XML Sitemaps' free version allows only 500 URLs, book detail pages are not included in site map.
-  * [Robots.txt file]() was created to exclude URLS of profile / checkout / shopping_bag applications' URLs from SEO
+  * [Robots.txt file](https://github.com/SofiaHorvath91/ucd_project_5/blob/master/robots.txt) was created to exclude URLS of profile / checkout / shopping_bag applications' URLs from SEO
 
 ## Features
 ### 1. Existing Features
@@ -641,6 +640,6 @@ Pictures were treated with [Photoshop](http://www.apsportable.com/photoshop-cs6-
 * To [Udemy](https://www.udemy.com/) platform users for their wonderful tutorials
 * To all the writers and readers of the world - no bookshop without books, no books without writers, and no witers without readers!
 ### 5. Special Thanks
-* To the team preparing Boutique Ado Project which largely helped me to learn e-commerce and build my own site
+* To the team preparing [Boutique Ado Project](https://github.com/Code-Institute-Solutions/boutique_ado_v1) which largely helped me to learn e-commerce and build my own site
 * My previous private mentor Samu Gábor Tamás who taught me all I knew before UCD
 * My Mother who gave me the love of books and never missed a bed-time story when I was a child

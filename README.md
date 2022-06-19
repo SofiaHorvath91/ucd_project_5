@@ -478,7 +478,7 @@ As an authenticated user, I expect to the feedbacks and recommendations given he
 As an authenticated user, I expect to be able to check all exisiting feedbacks\
 As an authenticated user, I expect to be able to delete my feedbacks from list of all feedbacks\
 As an authenticated admin user, I expect to be able to delete any feedback item from list\
-As a not authenticated user, I expect to not to see this page\
+As a not authenticated user, I expect to not to see this page
 
 * __Subscribe Page__
   * This page allows user to share site through social media sites and email via social share buttons, as well as to follow site content by navigating to shop's Facebook page or by subscribing to the site's newsletter.
@@ -579,6 +579,10 @@ Passing the python logic file (myappocalypse/views.py) through the [PEP8 Validat
 Passing the python models of all applications through Django unit tests and all tests passed.
   * [PEP8 Validations](https://github.com/SofiaHorvath91/ucd_project_5/blob/master/static/readme/python_test/pep8/)
   * [Django Unit Tests](https://github.com/SofiaHorvath91/ucd_project_5/blob/master/static/readme/python_test/unittest/)
+* Stripe API\
+Checkout and payment operations could be tested via Stripe API's Developer Console where after registering deployed site, incoming webhooks and events are registered. As per the example here below, upon placing order, successful payment intent event is created.
+  * [Order paid with Stripe via website](https://github.com/SofiaHorvath91/ucd_project_5/blob/master/static/readme/stripe_order.PNG)
+  * [Stripe event and webhook upon order payment](https://github.com/SofiaHorvath91/ucd_project_5/blob/master/static/readme/stripe_event.pdf)
 ### 5. Manual tests
 * Desktop\
 Mozilla Firefox, Google Chrome, Microsoft Edge: pages are working fine and have the corresponding style, social login works as expected.
